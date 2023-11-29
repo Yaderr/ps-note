@@ -1,0 +1,37 @@
+.password-input {
+    display: flex;
+    height: 100%;
+    background-color: var(--secondary-color);
+    align-items: center;
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.password-i {
+    margin-bottom: 0;
+    background-color: transparent;
+    outline: none;
+}
+
+.password-input button {
+    height: 100%;
+    margin-right: 15px;
+    padding: 0;
+    border: none;
+    display: flex;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.right-icon {
+    color: var(--black-700)
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    align-self: flex-end;
+    margin: 5px 0;
+    font-size: 0.96rem;
+}

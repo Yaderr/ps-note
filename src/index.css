@@ -1,0 +1,91 @@
+:root {
+  --white-50: rgb(255 255 255);
+  --white-100: rgb(239 239 239);
+  --white-200: rgb(220 220 220);
+  --white-300: rgb(189 189 189);
+  --white-400: rgb(152 152 152);
+  --white-500: rgb(124 124 124);
+  --white-600: rgb(101 101 101);
+  --white-700: rgb(82 82 82);
+  --white-800: rgb(70 70 70);
+  --white-900: rgb(61 61 61);
+  --white-950: rgb(41 41 41);
+  
+  --black-50: rgb(246 246 246);
+  --black-100: rgb(231 231 231);
+  --black-200: rgb(209 209 209);
+  --black-300: rgb(176 176 176);
+  --black-400: rgb(136 136 136);
+  --black-500: rgb(109 109 109);
+  --black-600: rgb(93 93 93);
+  --black-700: rgb(79 79 79);
+  --black-800: rgb(69 69 69);
+  --black-900: rgb(61 61 61);
+  --black-950: rgb(0 0 0);
+
+  --royal-blue-50: rgb(238 244 255);
+  --royal-blue-100: rgb(225 234 254);
+  --royal-blue-200: rgb(200 217 253);
+  --royal-blue-300: rgb(167 190 250);
+  --royal-blue-400: rgb(132 154 245);
+  --royal-blue-500: rgb(86 105 236);
+  --royal-blue-600: rgb(74 82 225);
+  --royal-blue-700: rgb(59 63 199);
+  --royal-blue-800: rgb(51 57 160);
+  --royal-blue-900: rgb(48 53 127);
+  --royal-blue-950: rgb(28 30 74);
+
+
+  
+
+
+}
+
+body {
+  --primary-color: var(--black-950);
+  --secondary-color: var(--black-50);
+  --gray-cons: var(--black-100);
+  --tertiary-color: var(--royal-blue-500);
+  --primary-background: var(--white-50);
+  /* 
+  --tertiary-color: var(--gray-80);
+  --quaternary-color: var(--gray-75);
+  --quaternary-background: var(--gray-15);
+  --tertiary-background: var(--gray-10);
+  --secondary-background: var(--gray-05);
+ 
+  --highlight-color: var(--blue-dark);
+  --highlight-background: var(--blue-light);
+  --selection-color: var(--blue-dark-translucent);
+  --success-color: var(--green-dark);
+  --success-background: var(--green-light);
+  --danger-color: var(--red-dark);
+  --danger-background: var(--red-light);
+  --love-color: var(--love-dark);
+  --editor-background: var(--editor-background-light); */
+}
+
+html {
+  font-size: 100%;
+}
+
+body, html, .root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color-scheme: light;
+  color: var(--primary-color);
+  background-color: var(--primary-background);
+  height: 100%;
+}
+
+.root {
+  height: 100%;
+}
+
+
+@media (prefers-color-scheme: black) {
+
+}
