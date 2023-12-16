@@ -1,0 +1,153 @@
+.home p {
+    color: var(--black-500);
+}
+
+.home header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.home .profile img {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    margin: 0;
+}
+
+
+.home .profile {
+    display: flex;
+    align-items: center;
+}
+
+.home-main-content section {
+    margin: 40px 0px;
+}
+
+.section-title {
+    display: inline-flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    align-items: center;
+    padding: 0;
+    gap: 10px;
+    background-color: transparent;
+    
+}
+
+.section-title:hover {
+    background-color: transparent;
+    color: inherit;
+}
+
+.section-title h2 {
+    margin: 0;
+}
+
+/* User prfile */
+
+.user-profile {
+   
+    
+}
+
+.user-profile .user-name {
+    padding: 20px;
+    text-align: center;
+}
+
+.user-profile .panel {
+    position: absolute;
+    background-color: var(--primary-color);
+    color: var(--primary-background);
+    margin-top: 10px;
+    width: 200px;
+    left: -70px;
+    border-radius: 10px;
+    
+}
+
+.user-profile .user-menu a {
+    color: var(--primary-background);
+    display: flex;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.user-profile .user-menu a:hover {
+    background-color: var(--black-900)
+}
+
+.user-profile .panel .user-menu ul {
+    list-style: none;
+    padding: 0;
+}
+.user-profile .panel .user-menu li {
+    width: 100%;
+}
+
+.user-profile button {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    outline: none;
+    cursor: pointer;
+    
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    border-radius: 10px 10px 0px 0px;
+}
+
+.footer-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    gap: 10px;
+}
+
+.footer-content a {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--primary-background);
+}
+
+footer p {
+    color: var(--black-500);
+}
+
+.enter {
+    transition: 200ms ease-out;
+}
+.enterFrom {
+    opacity: 0;
+    transform: translate(0px, 1.5rem);
+}
+.enterTo {
+    opacity: 100 ;
+    transform: translate(0px, 0px);
+}
+.leave {
+    transition: 150ms ease-in;
+}
+.leaveFrom {
+    opacity: 100;
+    transform: translate(0px, 0px);
+}
+.leaveTo {
+    opacity: 0;
+    transform: translate(0px, 1.5rem);
+}

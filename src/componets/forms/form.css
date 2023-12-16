@@ -49,7 +49,7 @@ hr {
     margin-top: 50px;
 }
 
-span {
+.or-providers-title span {
     min-width: 130px;
     box-sizing: content-box;
     text-align: center;

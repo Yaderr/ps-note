@@ -1,0 +1,96 @@
+.credit-card {
+    width: 400px;
+    height: 200px;
+    background-color: var(--primary-color);
+    color: var(--primary-background);
+    border-radius: 1.2rem;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-image: url(../../assets/Rectangle-5.svg);
+    fill: rebeccapurple;
+    background-position: 280px 0px;
+    background-size: 30%;
+    background-repeat: no-repeat; */
+}
+
+.credit-card button {
+    color: var(--primary-background);
+    background-color: transparent;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.credit-card .card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.credit-card .brand-logo {
+    
+    width: 80px;
+}
+
+.brand-logo svg {
+    width: 80px;
+    height: 40px;
+}
+
+.brand-logo {
+    z-index: 1;
+}
+
+.brand-logo svg {
+    fill: var(--primary-background);
+}
+
+.right-top-corner {
+    position: absolute;
+    margin-left: 234px;
+    margin-top: -20px;
+    border-top-right-radius: 10px;
+    
+    
+}
+
+.card-details {
+    margin-bottom: 15px;
+    user-select: none;
+}
+
+.cc-number {
+    display: flex;
+    gap: 10px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    height: 30px;
+}
+
+.card-info {
+    margin-top: 10px;
+    font-size: 0.96rem;
+}
+
+.card-info .expire {
+    margin-right: 70px;
+}
+
+.cc-number button {
+    margin-left: 10px;
+}
+.cc-number svg {
+    font-weight: 500;
+    stroke-width: 2px   ;
+}
+
+/* .background-f {
+    position: absolute;
+    top: 150px;
+    
+    width: 100px;
+    height: 100px;
+    background-color: rebeccapurple;
+} */

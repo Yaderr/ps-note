@@ -1,0 +1,107 @@
+
+button {
+    transition: display 1s ease;
+}
+nav {
+    position: fixed;
+    background-color: var(--gray-cons);
+    width: var(--side-width);
+    height: 800px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 10vw;
+    border-radius: 10px;
+    padding: 0px 10px;
+    /* transition: all 1s ease; */
+}
+
+.open {
+    --side-width: 250px;
+}
+
+.options {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.open .logo {
+    justify-content: space-between;
+}
+
+.open .logo-icon {
+    display: flex;
+}
+
+.logo-icon {
+    display: none;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo-icon p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.logo {
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.logo button, .list-item button, nav a {
+    padding: 10px;
+    margin: 0;
+    border: none;
+    display: flex;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.logo button:hover, .list-item button:hover, nav a:hover, .active {
+    background-color: black;
+    color: white;
+}
+
+.list-item {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.open .list-item span {
+    display: flex;
+}
+
+.open .list-item a{
+    align-items: center;
+}
+
+.open .list-item {
+    justify-content: left;
+}
+
+.list-item span {
+    display: none;
+    margin-left: 10px;
+}
+
+.open a {
+    width: 100%;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 20px;
+}
+
+
+h1 {
+    margin: 0;
+}
