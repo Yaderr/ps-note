@@ -1,8 +1,14 @@
+import { CardList } from "../../componets"
 
 
 export const Card = () => {
     
     return (
-        <h1>Cards</h1>
+        <div>
+
+            <h1>Cards</h1>
+            <CardList qty={100} />
+        </div>
+        
     )
 }
