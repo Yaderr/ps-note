@@ -1,3 +1,4 @@
+import { GlobeAltIcon, LinkIcon } from '@heroicons/react/24/outline'
 import { CopyButton } from './CopyButton'
 import './css/passwordItem.css'
 
@@ -6,12 +7,12 @@ interface WebsiteDetail {
     icon: string
 }
 
-interface PasswordItemProps {
+export interface PasswordItemProps {
     title: string,
     userNameEmail: string,
     password: string,
     websiteUrl: string,
-    websiteDetails: WebsiteDetail
+    websiteDetails?: WebsiteDetail
 }
 
 export const PasswordItem = ( { title, userNameEmail, password, websiteUrl, websiteDetails } : PasswordItemProps) => {
@@ -22,7 +23,7 @@ export const PasswordItem = ( { title, userNameEmail, password, websiteUrl, webs
             <a target="_blank" rel="oopener noreferrer" href={ websiteUrl }>
                 <div className="password-icon-details">
                     <div className="icon">
-                        <img src={ websiteDetails.icon } alt="" />
+                        <PasswordIcon icon={ websiteDetails?.icon } />
                     </div>
                     <div className="details">
                         <span>{ title }</span>
@@ -37,3 +38,8 @@ export const PasswordItem = ( { title, userNameEmail, password, websiteUrl, webs
         </div>
     )
 }
+
+const PasswordIcon = ({ icon }: { icon?: string }) => (
+    icon ? <img src={icon} alt="" />
+    : <GlobeAltIcon />
+)

@@ -10,7 +10,7 @@ export const MainLayoutView = () => {
             <div className="view-content">
                 <Outlet />
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

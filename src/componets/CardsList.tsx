@@ -41,7 +41,7 @@ const morecards: Card[] = [
     },
     {
         title: 'Ban polombia',
-        id: '1234-1234',
+        id: '1234-1237',
         number: 7234567891209456,
         expire: new Date("01/11/2025"),
         sec_code: 123,
@@ -53,7 +53,7 @@ const morecards: Card[] = [
     },
     {
         title: 'Ban polombia',
-        id: '1234-12345',
+        id: '1234-12348',
         number: 72345678912094544,
         expire: new Date("01/06/2028"),
         sec_code: 123,
@@ -65,7 +65,7 @@ const morecards: Card[] = [
     },
     {
         title: 'Amex Card',
-        id: '1234-12346',
+        id: '1234-12349',
         number: 72345678912094544,
         expire: new Date("01/06/2028"),
         sec_code: 123,
@@ -77,7 +77,7 @@ const morecards: Card[] = [
     },
     {
         title: 'Ban polombia',
-        id: '1234-1234',
+        id: '1234-1251',
         number: 7234567891209456,
         expire: new Date("01/11/2025"),
         sec_code: 123,
@@ -89,7 +89,7 @@ const morecards: Card[] = [
     },
     {
         title: 'Ban polombia',
-        id: '1234-12345',
+        id: '1234-12352',
         number: 72345678912094544,
         expire: new Date("01/06/2028"),
         sec_code: 123,
@@ -101,7 +101,7 @@ const morecards: Card[] = [
     },
     {
         title: 'Amex Card',
-        id: '1234-12346',
+        id: '1234-12353',
         number: 72345678912094544,
         expire: new Date("01/06/2028"),
         sec_code: 123,
@@ -113,7 +113,7 @@ const morecards: Card[] = [
     },
     {
         title: 'Ban polombia',
-        id: '1234-1234',
+        id: '1234-12354',
         number: 7234567891209456,
         expire: new Date("01/11/2025"),
         sec_code: 123,
@@ -125,7 +125,7 @@ const morecards: Card[] = [
     },
     {
         title: 'Ban polombia',
-        id: '1234-12345',
+        id: '1234-12355',
         number: 72345678912094544,
         expire: new Date("01/06/2028"),
         sec_code: 123,
@@ -137,7 +137,7 @@ const morecards: Card[] = [
     },
     {
         title: 'Amex Card',
-        id: '1234-12346',
+        id: '1234-12356',
         number: 72345678912094544,
         expire: new Date("01/06/2028"),
         sec_code: 123,
@@ -188,7 +188,7 @@ const cards: Card[] = [
     }
 ] 
 
-export const CardList = ({ qty }: { qty: number}) => {
+export const CardList = ({ qty }: { qty?: number}) => {
 
     return (
         <div className="card-list">

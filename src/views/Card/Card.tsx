@@ -5,8 +5,7 @@ export const Card = () => {
     
     return (
         <div>
-
-            <h1>Cards</h1>
+            <h2>Cards</h2>
             <CardList qty={100} />
         </div>
         

@@ -41,7 +41,7 @@ export const Home = () => {
                 </section>
                 <section>
                     <SectionTitle title='Cards List' name='cards' redirectTo='/cards' />
-                    <CardList />
+                    <CardList qty={100} />
                 </section>
                 <section>
                     <SectionTitle title='Passwords' name='passwords' redirectTo='/passwords' />

@@ -182,3 +182,27 @@ footer p {
     opacity: 0;
     transform: translate(0px, 1.5rem);
 }
+
+/* Network Error */
+
+.network-error-container {
+    min-height: calc(100vh - 400px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 30px;
+}
+
+.network-error-container button {
+    display: flex;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--primary-background);
+    padding: 10px 10px;
+    gap: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}

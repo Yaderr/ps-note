@@ -45,8 +45,7 @@ const Panel = ({ fullName, lastLogin, profilePic }: { fullName: string, lastLogi
 				<div className="edit-profile-pic">					
 					<input type="file" name="input-profilepic" id="input-profilepic" />
 					<label style={{ backgroundImage: `url(${profilePic})` }} htmlFor="input-profilepic">
-						
-							<PencilIcon width={20} height={20} />
+						<PencilIcon width={20} height={20} />
 					</label>
 				</div>
 				<span>{ fullName }</span>

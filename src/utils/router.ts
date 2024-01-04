@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Auth, SignupAuth, LoginAuth, MainLayoutView, Home, Card, Password } from "../views";
+import { Auth, SignupAuth, LoginAuth, MainLayoutView, Home, Card, Password, CreateLayoutView, CreateCard, CreatePassword } from "../views";
 
 export const router = createBrowserRouter([
     {
@@ -17,6 +17,20 @@ export const router = createBrowserRouter([
             {
                 path: 'signup',
                 Component: SignupAuth
+            }
+        ]
+    },
+    {
+        path: 'create',
+        Component: CreateLayoutView,
+        children: [
+            {
+                path: 'card',
+                Component: CreateCard
+            },
+            {
+                path: 'password',
+                Component: CreatePassword
             }
         ]
     },

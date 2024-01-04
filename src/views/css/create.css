@@ -1,0 +1,40 @@
+.create-password {
+   
+    height: 100vh;
+   
+    
+}
+
+.password-form {
+    margin: auto auto;
+    height: calc(100vh - 100px);
+    width: 500px;
+    display: flex;
+    align-items: center;
+    
+}
+
+.password-form form {
+    width: 100%;
+
+}
+
+.create-password .nav-header {
+    
+    height: 100px;
+    padding: 5px 100px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.create-password .nav-header button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+
+.two-inline-input {
+    display: flex;
+    gap: 15px;
+}
