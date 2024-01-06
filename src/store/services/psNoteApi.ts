@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import { Password } from "../../interface"
+import { RootState } from "../store"
 
 const {
     VITE_PS_NOTE_API_BASE_URL
@@ -9,18 +10,22 @@ export const psNoteApi = createApi({
     reducerPath: 'psNoteApi',
     baseQuery: fetchBaseQuery({
         baseUrl: VITE_PS_NOTE_API_BASE_URL,
-
+        prepareHeaders: (headers, { getState }) => {
+            const token = (getState() as RootState).auth.token
+            if(token) {
+                headers.set('Authorization', `Bearer ${token}`)
+            }
+            return headers
+        }
     }),
     endpoints: (builder) => ({
-        getAllPasswords: builder.query<Password[], void>({
+        getAllPasswords: builder.query<Password[], void> ({
             query: () => ({
                 url: 'passwords',
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIxOTM1OWI3LTk5ZmQtNDk0YS04ZjQwLTY4ZDkxNTc4MTI2MiIsImlhdCI6MTcwMzgwMTQwMywiZXhwIjoxNzAzODA1MDAzfQ.n1lAy9DbjbKMBUQqWfrW3qzYlMw3MF7jwHLhh1W5QVo`
-                }
+                method: 'GET'
             }),
-        })
+        }),
+        
     })
 })
 

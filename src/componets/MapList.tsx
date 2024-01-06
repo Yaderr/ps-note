@@ -1,19 +1,19 @@
+import { TypedUseQueryHookResult } from "@reduxjs/toolkit/query/react"
 import { NetworkError } from "./NetworkError"
 
 interface MapListProps<T> {
     ComponentElementItem: JSX.ElementType,
     Loader: JSX.ElementType
-    query: any
+    queryResult: TypedUseQueryHookResult<T[], void, any>
 }
 
-export const MapList = <T extends { id: string }>({ ComponentElementItem, Loader, query }: MapListProps<T>) => {
+export const MapList = <T extends { id: string }>({ ComponentElementItem, Loader, queryResult }: MapListProps<T>) => {
 
-    const { error, isLoading, refetch, data } = query
+    const { data, error, isLoading, refetch } = queryResult
     
     return (
         <>
             {
-
                 isLoading ? (<Loader />)
                 :error ? (<NetworkError error={error} reload={refetch} />)
                 :data ? (
@@ -23,7 +23,6 @@ export const MapList = <T extends { id: string }>({ ComponentElementItem, Loader
                                 <ComponentElementItem
                                     key={item.id}
                                     {...item}
-                                    type={null}
                                 />
                             ))
                         }
