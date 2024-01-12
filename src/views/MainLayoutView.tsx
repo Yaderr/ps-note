@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom"
 import { Footer, SideNavBar } from "../componets"
 import './css/mainLayout.css'
+import { PrivateOutlet } from "../utils/privateOutlet"
 
 export const MainLayoutView = () => {
     
@@ -8,7 +8,7 @@ export const MainLayoutView = () => {
         <div className="main-container">
             <SideNavBar />
             <div className="view-content">
-                <Outlet />
+                <PrivateOutlet />
             </div>
             {/* <Footer /> */}
         </div>

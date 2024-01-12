@@ -12,3 +12,10 @@ export interface Password {
     password: string,
     websiteDetails: WebsiteDetail
 }
+
+export interface PasswordParams {
+    title: string,
+    websiteUrl: string,
+    userNameEmail: string,
+    password: string,
+}

@@ -68,7 +68,7 @@ const CUS_ERRORS: {[key: string | number]: ErrorItemType} = {
 export const NetworkError = ({ error, reload }: NetworkErrorProps) => {
     
     useEffect(() => {
-        console.log({ error })        
+        console.log({ error })
     },[error])
 
     return (

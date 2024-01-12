@@ -1,9 +1,9 @@
-import { Outlet } from "react-router-dom"
+import { PrivateOutlet } from "../utils/privateOutlet"
 
 
 export const CreateLayoutView = () => {
 
     return (
-        <Outlet />
+        <PrivateOutlet />
     )
 }

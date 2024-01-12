@@ -32,23 +32,23 @@ export const SideNavBar = () => {
                     </NavLink>
                 </li>
                 <li className="list-item">
-                    <NavLink to='/cards' >
-                        <CreditCardIcon width={28} height={28} />
-                        <span>Cards</span>
-                    </NavLink>
-                </li>
-                <li className="list-item">
-                    <NavLink to='/notes'>
-                        <DocumentTextIcon width={28} height={28} />
-                        <span>Notes</span>
-                    </NavLink>
-                </li>
-                <li className="list-item">
                     <NavLink to='/passwords'>
                         <LockClosedIcon width={28} height={28} />
                         <span>Password</span>
                     </NavLink>
                 </li>
+                <li className="list-item">
+                    <NavLink to='/cards' >
+                        <CreditCardIcon width={28} height={28} />
+                        <span>Cards</span>
+                    </NavLink>
+                </li>
+                {/* <li className="list-item">
+                    <NavLink to='/notes'>
+                        <DocumentTextIcon width={28} height={28} />
+                        <span>Notes</span>
+                    </NavLink>
+                </li> */}
                 <li className="list-item bottom">
                     <button>
                         <ArrowLeftOnRectangleIcon width={28} height={28} />

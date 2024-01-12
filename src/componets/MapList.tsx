@@ -1,26 +1,32 @@
-import { TypedUseQueryHookResult } from "@reduxjs/toolkit/query/react"
+import { BaseQueryFn, TypedUseQueryHookResult } from "@reduxjs/toolkit/query/react"
 import { NetworkError } from "./NetworkError"
+import { ReactNode } from "react"
 
 interface MapListProps<T> {
-    ComponentElementItem: JSX.ElementType,
-    Loader: JSX.ElementType
-    queryResult: TypedUseQueryHookResult<T[], void, any>
+    queryResult: TypedUseQueryHookResult<T[], void, BaseQueryFn>
+    ElementItemComponent: JSX.ElementType,
+    Loader: JSX.ElementType,
+    Empty: ReactNode
 }
 
-export const MapList = <T extends { id: string }>({ ComponentElementItem, Loader, queryResult }: MapListProps<T>) => {
+export const MapList = <T extends { id: string }>({ 
+    queryResult, ElementItemComponent, Loader, Empty
+}: MapListProps<T>) => {
 
     const { data, error, isLoading, refetch } = queryResult
+    console.log(data);
+    
     
     return (
         <>
             {
                 isLoading ? (<Loader />)
                 :error ? (<NetworkError error={error} reload={refetch} />)
-                :data ? (
+                :data && data.length ? (
                     <>
                         {
                             data.map((item: T) => (
-                                <ComponentElementItem
+                                <ElementItemComponent
                                     key={item.id}
                                     {...item}
                                 />
@@ -28,10 +34,10 @@ export const MapList = <T extends { id: string }>({ ComponentElementItem, Loader
                         }
                     </>
                 )
-                :(
-                    <span>
-                        Empty
-                    </span>
+                : (
+                    <>
+                        {Empty}
+                    </>
                 )
             }
         </>

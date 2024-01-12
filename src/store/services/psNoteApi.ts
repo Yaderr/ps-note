@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { Password } from "../../interface"
+import { Password, PasswordParams } from "../../interface"
 import { RootState } from "../store"
 
 const {
@@ -16,20 +16,27 @@ export const psNoteApi = createApi({
                 headers.set('Authorization', `Bearer ${token}`)
             }
             return headers
-        }
+        },
+        
     }),
     endpoints: (builder) => ({
         getAllPasswords: builder.query<Password[], void> ({
             query: () => ({
                 url: 'passwords',
                 method: 'GET'
-            }),
+            })
         }),
-        
-    })
+        createPassword: builder.mutation<void, PasswordParams> ({
+            query: (body: PasswordParams) => ({
+                url: 'passwords',
+                method: 'POST',
+                body
+            })
+        })
+    }),
 })
 
 
 
 
-export const { useGetAllPasswordsQuery } = psNoteApi
+export const { useGetAllPasswordsQuery, useCreatePasswordMutation } = psNoteApi

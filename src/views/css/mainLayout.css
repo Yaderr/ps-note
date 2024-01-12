@@ -4,4 +4,5 @@
     padding-left: calc(10vw + var(--side-width) + 30px);
     padding-right: calc(10vw + var(--side-width) + 30px);
     padding-top: 80px;
+    padding-bottom: 30px;
 }

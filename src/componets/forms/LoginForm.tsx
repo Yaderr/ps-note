@@ -1,13 +1,13 @@
 import { FormEvent, useState } from 'react'
 import { LoginProviders } from '../LoginProviders'
 import { PasswordInput } from '../input/PasswordInput'
-import './form.css'
 import { LoginParams } from '../../interface'
 import { useLoginMutation } from '../../store/services/authApi'
 import { setCredentials } from '../../store/slice/authSlice'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import './form.css'
 
 export const LoginForm = () => {
 
@@ -25,14 +25,13 @@ export const LoginForm = () => {
         const response = await login(formState)
 
         if(!error && 'data' in response) {
-            
             dispatch(setCredentials(response.data))
             navigate('/')
         }
     }
 
     const inputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setFormState({...formState, [event.target.name]: event.target.value,  })
+        setFormState({...formState, [event.target.name]: event.target.value })
     }
     
     return (

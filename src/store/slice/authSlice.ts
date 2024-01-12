@@ -15,8 +15,12 @@ export const authSlice = createSlice({
         setCredentials: (state, { payload: { user, access_token } }: PayloadAction<LoginResponse>) => {
             state.user = user
             state.token = access_token
+        },
+        logOut: (state) => {
+            state.user = null
+            state.token = null
         }
     }
 })
 
-export const { setCredentials } = authSlice.actions
+export const { setCredentials, logOut } = authSlice.actions

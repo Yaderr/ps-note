@@ -2,8 +2,17 @@ import { Popover, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { User } from '../interface'
 import { PencilIcon } from '@heroicons/react/24/solid'
+import { useDispatch } from 'react-redux'
+import { logOut } from '../store/slice/authSlice'
 
-export const UserProfile = (user: User) => {
+interface userProfileProps {
+	user: User
+}
+
+export const UserProfile = ({ user }: userProfileProps) => {
+
+	console.log();
+	
 	
 	return (
 		<div className="user-profile">
@@ -11,7 +20,7 @@ export const UserProfile = (user: User) => {
 				{() => (
 					<>
 						<Popover.Button>
-							<img src={ user.profilePic} alt="" />
+							<img src={ user?.profilePic} alt="" />
 						</Popover.Button>
 						<Transition
 							as={Fragment} enter="enter"
@@ -22,7 +31,7 @@ export const UserProfile = (user: User) => {
 							leaveTo="leaveTo"
 						>
 							<Popover.Panel>
-								<Panel fullName={ user.fullName} lastLogin={ user.lastLogin } profilePic={ user.profilePic }  />
+								<Panel {...user}  />
 							</Popover.Panel>
 						</Transition>
 					</>
@@ -33,10 +42,12 @@ export const UserProfile = (user: User) => {
 	)
 }
 
-const Panel = ({ fullName, lastLogin, profilePic }: { fullName: string, lastLogin: Date, profilePic: string}) => {
+const Panel = ({ fullName, profilePic, lastLogin }: User) => {
 
-	const logOut = () => {
+	const dispatch = useDispatch()
 
+	const startLogOut = () => {
+		dispatch(logOut())
 	}
 	
 	return (
@@ -57,7 +68,7 @@ const Panel = ({ fullName, lastLogin, profilePic }: { fullName: string, lastLogi
 					<li><a href="/privacy">Privacidad</a></li>
 					<li><a href="/terms">Términos</a></li>
 					<li><a href="/help">Ayuda</a></li>
-					<li><a href="#" onClick={ logOut } >Cerrar sesión</a></li>
+					<li><a href="#logOut" onClick={ startLogOut } >Cerrar sesión</a></li>
 				</ul>
 			</div>
 		</div>

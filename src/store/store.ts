@@ -13,6 +13,7 @@ import {
     REGISTER
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { rtkQueryErrorLogger } from "./services/QueryErrorMiddleware";
 
 const persistConfig = {
     key: 'root',
@@ -35,7 +36,7 @@ export const store = configureStore({
         serializableCheck: {
             ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
         }
-    }).concat(psNoteApi.middleware, authApi.middleware)
+    }).concat(psNoteApi.middleware, rtkQueryErrorLogger, authApi.middleware)
 })
 
 export const persistor = persistStore(store)

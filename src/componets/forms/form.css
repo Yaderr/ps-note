@@ -98,8 +98,8 @@ hr {
     display: flex;
     align-items: center;
     gap: 10px;
-    border: 1px solid var(--primary-color);
-    padding: 20px 10px;
+    background-color: rgb(255 236 236);
+    padding: 18px 10px;
     border-radius: 12px;
     margin-bottom: 30px;
 }
