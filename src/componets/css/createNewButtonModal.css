@@ -1,0 +1,74 @@
+.create-new-button {
+    position: fixed;
+    right: calc(10vw + var(--side-width) + 30px);
+    bottom: 80px;
+}
+
+.create-new-button button {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--primary-background);
+    opacity: .8;
+    cursor: pointer;
+}
+.create-new-button button:hover {
+    opacity: 1;
+}
+
+
+.create-new-top-button button {
+    padding: 10px 10px;
+    border: none;
+    color: var(--primary-background);
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.head-nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create-new-modal-dialog {
+    position: relative;
+    z-index: 10;
+}
+
+.create-new-modal-ovelay {
+    position: fixed;
+    inset: 0;
+    overflow-y: auto;
+}
+
+.create-new-modal {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.create-new-modal-panel {
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.create-new-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(.8px);
+    background-color: rgba(0, 0, 0, 0.2);
+}

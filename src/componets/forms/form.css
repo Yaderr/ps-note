@@ -12,11 +12,11 @@ input[type="submit"] {
     background-color: var(--primary-color);
     color: var(--secondary-color);
     font-weight: 500;
-    margin-top: 15px;
+    margin: 15px 0 0;
     cursor: pointer;
 }
 
-h2 {
+.form-container h2 {
     margin: 0;
     margin-bottom: 30px;
     font-size: 2rem;

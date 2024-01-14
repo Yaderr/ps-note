@@ -1,11 +1,13 @@
-import { PasswordsList } from "../../componets"
-
+import { CreateNewButtonModal, PasswordsList } from "../../componets"
 
 export const Password = () => {
 
     return (
         <div>
-            <h2>Passwords</h2>
+            <div className="head-nav">
+                <h2>Passwords</h2>
+                <CreateNewButtonModal type="Password" />
+            </div>
             <PasswordsList />
         </div>
     )

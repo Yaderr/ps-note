@@ -35,6 +35,18 @@
   --royal-blue-900: rgb(48 53 127);
   --royal-blue-950: rgb(28 30 74);
 
+  --emerald-50: rgb(240 253 245);
+  --emerald-100: rgb(220 252 232);
+  --emerald-200: rgb(187 247 209);
+  --emerald-300: rgb(134 239 173);
+  --emerald-400: rgb(74 222 128);
+  --emerald-500: rgb(34 197 94);
+  --emerald-600: rgb(22 163 74);
+  --emerald-700: rgb(21 128 60);
+  --emerald-800: rgb(22 101 51);
+  --emerald-900: rgb(20 83 43);
+  --emerald-950: rgb(5 46 20);
+
 
   
 
@@ -48,6 +60,8 @@ body {
   --tertiary-color: var(--royal-blue-500);
   --primary-background: var(--white-50);
   --side-width: 65px;
+  --succes-background: var(--emerald-200);
+  --succes-color: var(--emerald-500);
   /* 
   --tertiary-color: var(--gray-80);
   --quaternary-color: var(--gray-75);

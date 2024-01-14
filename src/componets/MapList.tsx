@@ -13,9 +13,7 @@ export const MapList = <T extends { id: string }>({
     queryResult, ElementItemComponent, Loader, Empty
 }: MapListProps<T>) => {
 
-    const { data, error, isLoading, refetch } = queryResult
-    console.log(data);
-    
+    const { data, error, isLoading, refetch } = queryResult    
     
     return (
         <>

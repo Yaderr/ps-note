@@ -10,13 +10,9 @@ interface SectionTitleProps {
 export const SectionTitle = ({ title, name, redirectTo }: SectionTitleProps) => {
 
     return (
-        <Link to={ redirectTo } className="section-title" data-test-id={name}>
-           <div>
-           <h2>{ title }</h2>
-           </div>
-            <div>
-            <ChevronRightIcon strokeWidth={4} width={15} height={15} />
-            </div>
+        <Link to={ redirectTo } className="section-title" data-test-id={name}>   
+        <h2>{ title }</h2>
+           <ChevronRightIcon strokeWidth={4} width={15} height={15} />
         </Link>
     )
 }

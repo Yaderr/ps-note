@@ -6,8 +6,8 @@
 }
 
 .password-form {
-    margin: auto auto;
-    height: calc(100vh - 100px);
+    
+   
     width: 500px;
     display: flex;
     align-items: center;
@@ -37,4 +37,60 @@
 .two-inline-input {
     display: flex;
     gap: 15px;
+}
+.create-new-modal-panel h2 {
+    margin: 0;
+    text-transform: capitalize;
+}
+.create-new-modal-panel .h-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.create-new-modal-panel .h-nav button {
+    border: none;
+    padding: 2px;
+    display: flex;
+    background-color: transparent;
+    
+    cursor: pointer;
+}
+
+.password-success-message-container {
+    min-width: 380px;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.password-success-message {
+    text-align: center;
+}
+
+.password-success-message h2 {
+    font-weight: 400;
+    margin-top: 20px;
+    text-transform: none;
+}
+
+.password-success-message .success-icon {
+    display: inline-flex;
+    border-radius: 100%;
+    padding: 10px;
+    background-color: var(--succes-background);
+    color: var(--succes-color );
+}
+
+.password-success a {
+    display: block;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--primary-background);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
 }
