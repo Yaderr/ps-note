@@ -21,10 +21,9 @@ export const LoginForm = () => {
 
     const startLogin = async (event: FormEvent) => {
         event.preventDefault()
-        
         const response = await login(formState)
-
-        if(!error && 'data' in response) {
+        
+        if('data' in response) {
             dispatch(setCredentials(response.data))
             navigate('/')
         }
