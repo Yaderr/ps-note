@@ -9,7 +9,6 @@ export const rtkQueryErrorLogger: Middleware =
     const typedAction: PayloadAction<FetchBaseQueryError, string> = (action as PayloadAction<FetchBaseQueryError>)
 
     if (isRejectedWithValue(action) && action.type.split('/')[0] === 'psNoteApi') {
-      console.warn('We got a rejected action!', action)
       if(typedAction.payload?.status === 401) {
         dispatch(logOut())
       }

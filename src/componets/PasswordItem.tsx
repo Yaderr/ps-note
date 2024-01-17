@@ -40,6 +40,6 @@ export const PasswordItem = ( { title, userNameEmail, password, websiteUrl, webs
 }
 
 const PasswordIcon = ({ icon }: { icon?: string }) => (
-    icon ? <img src={icon} alt="" />
+    icon ? <img onError={(a) => {console.log(a)}} src={icon} alt="" />
     : <GlobeAltIcon />
 )

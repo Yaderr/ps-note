@@ -52,9 +52,8 @@ export const CreateNewButtonModal = ({ type }: CreateNewButtonModalProps) => {
                         <div className='create-new-modal'>
                             <Dialog.Panel className='create-new-modal-panel'>
                                 <div className="h-nav">
-                                    <h2>{type}</h2>
                                     <button onClick={closeModal}>
-                                        <XMarkIcon width={20} height={20} />
+                                        <XMarkIcon strokeWidth={2} width={20} height={20} />
                                     </button>
                                 </div>
                                 {

@@ -1,5 +1,5 @@
 import { CheckCircleIcon } from '@heroicons/react/24/outline'
-import './css/bottomAlert.css'
+import './css/alert.css'
 
 export const BottomAlert = ({ open }) => {
 

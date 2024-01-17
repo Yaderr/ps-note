@@ -47,9 +47,17 @@
   --emerald-900: rgb(20 83 43);
   --emerald-950: rgb(5 46 20);
 
-
-  
-
+  --chablis-50: rgb(254 242 242);
+  --chablis-100: rgb(254 226 226);
+  --chablis-200: rgb(254 202 202);
+  --chablis-300: rgb(252 165 165);
+  --chablis-400: rgb(248 113 113);
+  --chablis-500: rgb(239 68 68);
+  --chablis-600: rgb(220 38 38);
+  --chablis-700: rgb(185 28 28);
+  --chablis-800: rgb(153 27 27);
+  --chablis-900: rgb(127 29 29);
+  --chablis-950: rgb(69 10 10);
 
 }
 

@@ -39,10 +39,14 @@ export const LoginForm = () => {
             <ErrorAlert error={error} />
             <form onSubmit={ startLogin }>
                 <input onChange={ inputChange } type="email" name="email" placeholder='Email' required />
-                <PasswordInput onChange={inputChange} />
+                <PasswordInput value={formState.password} onChange={inputChange} />
                 <a href='/reset-password'>Forgot Password?</a>
-                <input disabled={ isLoading  } type="submit" value="Login" />
-                <span style={{ display: isLoading ? "": "none" }}>Loading...</span>
+                <button disabled={ isLoading } type="submit">
+                    {
+                        isLoading ? <Spinner />
+                        :'Login'
+                    }
+                </button>
             </form>
             <div className='or-providers'>
                 <div className='or-providers-title'>
@@ -52,6 +56,19 @@ export const LoginForm = () => {
             </div>
             <p className="signup-user-cta">Don't have an account? <a href='/auth/signup'>Sign up</a></p>
         </div>
+    )
+}
+
+export const Spinner = () => {
+    return (
+        <svg className='spinner'>
+            <circle stroke='currentColor' strokeWidth={4} cx={12} cy={12} r={10}></circle>
+            <path className="path"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            >
+            </path>
+        </svg>
     )
 }
 

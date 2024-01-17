@@ -1,8 +1,11 @@
 .create-password {
    
     height: 100vh;
-   
-    
+    flex-direction: column;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .password-form {
@@ -44,7 +47,7 @@
 }
 .create-new-modal-panel .h-nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     margin-bottom: 15px;
 }

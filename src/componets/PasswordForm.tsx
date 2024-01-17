@@ -3,6 +3,8 @@ import { useCreatePasswordMutation } from "../store/services/psNoteApi"
 import { Password, PasswordParams } from "../interface"
 import { CheckIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline"
 import { PasswordInput } from "./input/PasswordInput"
+import { Spinner } from "."
+import { AlertError } from "./AlertError"
 
 interface PasswordFormParams {
     password?: Password
@@ -11,7 +13,7 @@ interface PasswordFormParams {
 
 export const PasswordForm = ({ password: initialValue }: PasswordFormParams) => {
 
-    const [createPasword, { data, isLoading, error, isSuccess }] = useCreatePasswordMutation()
+    const [createPasword, { isLoading, error, isSuccess }] = useCreatePasswordMutation()
     const [password, setPassword] = useState<PasswordParams>({
         title: initialValue?.title || '',
         websiteUrl: initialValue?.websiteUrl || '',
@@ -20,17 +22,8 @@ export const PasswordForm = ({ password: initialValue }: PasswordFormParams) => 
     })
 
     const submitForm = async(event: React.ChangeEvent<HTMLFormElement>) => {
-        event.preventDefault()
-        console.log(password);
-        
-        const res = await createPasword(password)
-        if(error) {
-            console.log(error);
-        }
-        if(data) {
-            console.log(data);
-            
-        }
+        event.preventDefault()        
+        await createPasword(password)
     }
 
     const inputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,26 +38,17 @@ export const PasswordForm = ({ password: initialValue }: PasswordFormParams) => 
         <div className="password-form-container">
             <div className="password-form">
                 <form onSubmit={ submitForm }>
-                    {/* Add error Alert  */}
-                    <div style={{ display: error? '':'none'}} className='error-alert'>
-                        <ExclamationTriangleIcon width={20} height={20} />
-                        <ul className=''> 
-                            {
-                                error && 'data' in error ? error.data.message.map((e: string) => (
-                                    
-                                    <li>{e}</li>
-                                    
-                                    
-                                ))
-                                :""
-                            }
-                        </ul>
-                    </div>
+                    <AlertError errorMessage={ error ? ( 'data' in error && error.data['message'])?error.data['message']: error?.error : null } />
                     <input value={password.title} onChange={inputChange} type="text" name="title" id="title" placeholder='Title' />
                     <input value={password.websiteUrl} onChange={inputChange} type="text" name="websiteUrl" id="websiteUrl" placeholder='Website URL' />
                     <input value={password.userNameEmail} onChange={inputChange} type="text" name="userNameEmail" id="userNameEmail" placeholder='Username or Email' />
                     <PasswordInput value={password.password} onChange={inputChange} />
-                    <input disabled={ isLoading } type="submit" value={isLoading ? 'Saving': 'Save'} />
+                    <button disabled={ isLoading } type="submit">
+                        { 
+                            isLoading ? <Spinner />
+                            :'Save'
+                        }
+                    </button>
                 </form>
             </div>
         </div>

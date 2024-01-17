@@ -8,19 +8,28 @@ input {
     outline: none;
 }
 
-input[type="submit"] {
+input[type="submit"], button[type="submit"] {
     background-color: var(--primary-color);
     color: var(--secondary-color);
     font-weight: 500;
     margin: 15px 0 0;
     cursor: pointer;
+    font-size: 1.2rem;
+}
+
+button[type="submit"] {
+    padding: 18px 15px;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .form-container h2 {
     margin: 0;
     margin-bottom: 30px;
-    font-size: 2rem;
-    font-weight: 900;
+    font-size: 2.2rem;
+    font-weight: 700;
 }
 
 .form-container {
@@ -106,4 +115,24 @@ hr {
 
 .error-alert p {
     margin: 0;
+}
+
+.spinner {
+    width: 24px;
+    height: 24px;
+    color: rgba(255, 255, 255, .2);
+    animation: spinn 1s linear infinite;
+}
+
+.path {
+    color: var(--primary-background);
+}
+
+@keyframes spinn {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
