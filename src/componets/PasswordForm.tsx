@@ -1,15 +1,14 @@
 import { useState } from "react"
 import { useCreatePasswordMutation } from "../store/services/psNoteApi"
 import { Password, PasswordParams } from "../interface"
-import { CheckIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline"
 import { PasswordInput } from "./input/PasswordInput"
 import { Spinner } from "."
 import { AlertError } from "./AlertError"
+import { SuccessMessage } from "./SuccessMessage"
 
 interface PasswordFormParams {
     password?: Password
 }
-
 
 export const PasswordForm = ({ password: initialValue }: PasswordFormParams) => {
 
@@ -22,7 +21,7 @@ export const PasswordForm = ({ password: initialValue }: PasswordFormParams) => 
     })
 
     const submitForm = async(event: React.ChangeEvent<HTMLFormElement>) => {
-        event.preventDefault()        
+        event.preventDefault()
         await createPasword(password)
     }
 
@@ -31,7 +30,7 @@ export const PasswordForm = ({ password: initialValue }: PasswordFormParams) => 
     }
 
     if(isSuccess) {
-        return <SuccessMessage message='Your password was created' />
+        return <SuccessMessage type="passwords" message='Your password was created' />
     }
 
     return (
@@ -51,25 +50,6 @@ export const PasswordForm = ({ password: initialValue }: PasswordFormParams) => 
                     </button>
                 </form>
             </div>
-        </div>
-    )
-}
-
-const SuccessMessage = ({ message }) => {
-    
-    return (
-        
-        <div className="password-success">
-            <div className="password-success-message-container">
-                <div className="password-success-message">
-                    <div className="success-icon">
-                        <CheckIcon width={30} height={30} />
-                    </div>
-                    <h2>{message}</h2>
-                </div>
-                
-            </div>
-            <a  href="/passwords">Go back</a>
         </div>
     )
 }

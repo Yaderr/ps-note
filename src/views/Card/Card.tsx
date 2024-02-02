@@ -1,12 +1,15 @@
-import { CardList } from "../../componets"
+import { CardList, CreateNewButtonModal } from "../../componets"
 
 
 export const Card = () => {
     
     return (
         <div>
-            <h2>Cards</h2>
-            <CardList qty={100} />
+            <div className="head-nav">
+                <h2>Cards</h2>
+                <CreateNewButtonModal type="Card" />
+            </div>
+            <CardList />
         </div>
         
     )

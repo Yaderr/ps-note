@@ -2,23 +2,26 @@
 
 
 export enum CC_TYPE {
-    VISA = 'visa',
-    MASTER = 'MasterCard',
-    AMEX = 'amex',
-    DISCO = 'discover'
-}
-
-export interface TypeDetails {
-    name: string,
-    icon: string
+    VISA = 'VISA',
+    MASTER = 'MASTERCARD',
+    AMEX = 'AMERICAN_EXPRESS',
+    DISCO = 'DISCOVER'
 }
 
 export interface Card {
     id: string,
     title: string
-    number: number,
-    expire: Date,
-    sec_code: number,
+    number: string,
+    expire: string,
+    sec_code: string,
     type: CC_TYPE,
-    typeDetails: TypeDetails
+}
+
+export interface CardParam {
+    id?: string
+    title: string
+    number: string,
+    expire: string,
+    sec_code: string,
+    type: CC_TYPE | undefined,
 }

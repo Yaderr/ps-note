@@ -3,14 +3,6 @@ import { UserProfile } from '../../componets/UserProfile'
 import { useAuth } from '../../hooks/useAuth'
 import '../css/home.css'
 
-enum CC_TYPE {
-    VISA = 'visa',
-    MASTER = 'MasterCard',
-    AMEX = 'amex',
-    DISCO = 'discover'
-
-}
-
 export const Home = () => {
 
     const user = useAuth()
@@ -37,10 +29,10 @@ export const Home = () => {
                     <SectionTitle title='Passwords' name='passwords' redirectTo='/passwords' />
                     <PasswordsList />
                 </section>
-                {/* <section>
+                <section>
                     <SectionTitle title='Cards List' name='cards' redirectTo='/cards' />
-                    <CardList qty={100} />
-                </section> */}
+                    <CardList />
+                </section>
             </main>
         </div>
     )

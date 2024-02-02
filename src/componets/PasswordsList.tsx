@@ -18,8 +18,8 @@ export const PasswordsList = () => {
         <div className="password-list">
             <MapList<Password>
                 queryResult={getAllPasswordsQuery}
-                ElementItemComponent={PasswordItem}
-                Loader={PasswordListLoader}
+                ElementItemComponent={ PasswordItem }
+                Loader={ PasswordListLoader }
                 Empty={ 
                     <EmptyMessage 
                         Icon={LockClosedIcon}

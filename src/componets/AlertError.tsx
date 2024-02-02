@@ -1,7 +1,7 @@
 import { ExclamationTriangleIcon } from "@heroicons/react/24/solid";
 import { Fragment, memo } from "react";
-import './css/alert.css'
 import { Transition } from "@headlessui/react";
+import './css/alert.css'
 
 interface AlertErrorProps {
     errorMessage: string | string[]
@@ -14,6 +14,7 @@ export const AlertError = memo(({ errorMessage }: AlertErrorProps) => {
         <Transition
             appear
             as={Fragment}
+            show
             enter="dialog-animation-enter"
             enterFrom="dialog-animation-enter-from"
             enterTo="dialog-animation-enter-to"
@@ -22,36 +23,36 @@ export const AlertError = memo(({ errorMessage }: AlertErrorProps) => {
             leaveTo="dialog-animation-leave-to"
         >
 
-        <div className="alert-error">
-            <div className="icon">
-                <ExclamationTriangleIcon width={25} height={25} />
-            </div>
-            <div className="alert-content">
-                {
-                    Array.isArray(errorMessage) ? (
-                        <>
-                            <div>
-                                <span>There were {errorMessage.length} errors with your submission</span>
-                            </div>
-                            <ul>
-                                {
-                                    errorMessage.map(message => (
-                                        <li key={message}>{ message }</li>
+            <div className="alert-error">
+                <div className="icon">
+                    <ExclamationTriangleIcon width={25} height={25} />
+                </div>
+                <div className="alert-content">
+                    {
+                        Array.isArray(errorMessage) ? (
+                            <>
+                                <div>
+                                    <span>There were {errorMessage.length} errors with your submission</span>
+                                </div>
+                                <ul>
+                                    {
+                                        errorMessage.map(message => (
+                                            <li key={message}>{ message }</li>
                                         ))
                                     }
-                            </ul>
-                        </>
-                        
+                                </ul>
+                            </>
+                            
+                            )
+                            :(
+                                <span>
+                                {errorMessage}
+                            </span>
                         )
-                        :(
-                            <span>
-                            {errorMessage}
-                        </span>
-                    )
-                    
-                }
+                        
+                    }
+                </div>
             </div>
-        </div>
-                </Transition>
+        </Transition>
     )
 },)

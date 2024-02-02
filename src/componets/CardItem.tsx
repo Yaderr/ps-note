@@ -1,74 +1,91 @@
 import { EllipsisVerticalIcon, PencilIcon, Square2StackIcon, TrashIcon, cop } from '@heroicons/react/24/outline'
 import { Card } from '../interface'
-import './css/cardItem.css'
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import { ConfirmDialog } from '.'
 import { useNavigate } from 'react-router-dom'
+import './css/cardItem.css'
+import { useDeleteCardMutation } from '../store/services/psNoteApi'
+import { EditCardModal } from './EditCardModal'
+import { Btn } from './Btn'
 
-export const CardItem = ({ id, title, number, typeDetails }: Card) => {
+export const CardItem = (card: Card) => {
 
-    const numLength = number.toString().length
-    const anonNumber = '**** '.repeat((numLength-4)/4)+number.toString().substring(numLength-4) 
+    const numLength = card.number.toString().length
+    const anonNumber = '**** '.repeat((numLength-4)/4)+card.number.toString().substring(numLength-4) 
     
     return (
         <div className='item-container'>
             <div className='card-item'>
-                <a target="_blank" rel="noopener noreferrer" title={typeDetails.name}>
+                <a target="_blank" rel="noopener noreferrer" title={card.type}>
                     <div className='cards-icon-details'>
                         <div className='icon'>
-                            <img src={ typeDetails.icon } alt="" />
+                            <img src={`/src/assets/networks/${card.type}_logo.svg`} alt="" />
                         </div>
                         <div className='details'>
-                            <span>{ title }</span>
+                            <span>{ card.title }</span>
                             <p>{ anonNumber }</p>
                         </div>
                     </div>
                 </a>
                 <div className='password-icon-action'>
-                    <ActionMenu id={id} text={number.toString()} />
+                    <ActionMenu card={card}  />
                 </div>
             </div>
         </div>
     )
 }
 
-const ActionMenu = ({ id, text }: { id: string, text: string }) => {
+const ActionMenu = ({ card }: { card: Card }) => {
 
-    const [open, setOpen] = useState(false)
+    
     const navigate = useNavigate()
-
-    const handleDelete = () => {
-        setOpen(true)
+    const [remove] = useDeleteCardMutation()
+    
+    // Edit Modal
+    const [isOpenEditModal, setIsOpenEditModal] = useState(false)
+    const openEditModal = () => {
+        setIsOpenEditModal(true)
+    }
+    const closeEditModal = () => {
+        setIsOpenEditModal(false)
     }
 
-    const close = () => {
-        setOpen(false)
+    // Confirm Dialog 
+    const [isOpenConfirmDialog, setIsOpenConfirmDialog] = useState(false)
+    const handleDelete = () => {
+        setIsOpenConfirmDialog(true)
+    }
+    const closeConfirmDialog = () => {
+        setIsOpenConfirmDialog(false)
     }
 
     const copy = () => {
-        navigator.clipboard.writeText(`${text}`)
+        navigator.clipboard.writeText(`${card.number.toString()}`)
     }
 
-    const deleteCard = () => {
-        console.log(`Yes delte card ${id}`);
-        setOpen(false)
-    }
-
-    const goToEdit = () => {
-        navigate(`/edit/card/${id}`)
+    const deleteCard = async () => {
+        console.log(`Yes delte card ${card.id}`);
+        await remove(card.id)
+        setIsOpenConfirmDialog(false)
     }
     
     return (
         <div className='action-menu'>
             <ConfirmDialog 
-                title='Are you sure you want to delete this card?'
-                isOpen={open}
-                closeDialog={close}
-                confirmDialog={ deleteCard }
+                title='Are you sure?'
+                isOpen={ isOpenConfirmDialog }
+                closeDialog={closeConfirmDialog} 
+                confirmDialog={deleteCard}
+                body='This action cannot be undone, All value associated with this will be lost.'
+            />
+            <EditCardModal 
+                card={card}
+                isOpen={ isOpenEditModal }
+                closeModal={ closeEditModal } 
             />
             <Menu as="div" className='menu'>
-                <Menu.Button>
+                <Menu.Button> 
                     <EllipsisVerticalIcon width={25} height={25} />
                 </Menu.Button>
                 <Transition
@@ -80,7 +97,7 @@ const ActionMenu = ({ id, text }: { id: string, text: string }) => {
                     leaveFrom="menu-animation-leave-from"
                     leaveTo="menu-animation-leave-to"
                 >
-                    <Menu.Items className='menu-items'> 
+                    <Menu.Items className='menu-items'>
                         <Menu.Item>
                             <button onClick={ copy } aria-selected={true} className='item'>
                                 <Square2StackIcon width={18} height={18} />
@@ -88,7 +105,7 @@ const ActionMenu = ({ id, text }: { id: string, text: string }) => {
                             </button>            
                         </Menu.Item>
                         <Menu.Item >
-                            <button className='item' onClick={ goToEdit }>
+                            <button className='item' onClick={ openEditModal }>
                                 <PencilIcon width={18} height={18} />
                                 Edit
                             </button>

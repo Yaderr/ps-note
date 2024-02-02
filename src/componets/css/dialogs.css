@@ -6,7 +6,6 @@
 .confirm-dialog .back-drop {
     position: fixed;
     inset: 0;
-    backdrop-filter: blur(1px);
     background-color: rgba(0, 0, 0, 0.199);
 }
 
@@ -28,6 +27,9 @@
     background-color: var(--primary-background);
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 0px 0px 18px 0px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    text-align: center;
+    width: 400px;
 }
 
 .confirm-dialog .dialog-panel h3 {
@@ -43,6 +45,7 @@
 }
 
 .confirm-dialog .dialog-actions button {
+    width: 100%;
     border: none;
     padding: 8px 15px;
     border-radius: 5px;
@@ -56,7 +59,7 @@
 .confirm-dialog .dialog-actions .delete {
     color: var(--primary-background);
     /* border: 1px solid red; */
-    background-color: red;
+    background-color: var(--error-color);
 
 }
 
@@ -72,7 +75,9 @@
 }
 
 .confirm-dialog .dialog-body p {
-    margin: 0;
+    color: var(--black-500);
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .confirm-dialog .dialog-body {
@@ -97,4 +102,13 @@
 }
 .dialog-animation-leave-to {
     opacity: 0;
+}
+
+.dialog-panel .icon {
+    background-color: var(--error-background);
+    color: var(--error-color);
+    display: inline-flex;
+    padding: 10px;
+    border-radius: 100%;
+    margin-bottom: 20px;
 }

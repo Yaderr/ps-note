@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { Password, PasswordParams } from "../../interface"
+import { Card, CardParam, Password, PasswordParams } from "../../interface"
 import { RootState } from "../store"
 
 const {
@@ -24,14 +24,46 @@ export const psNoteApi = createApi({
             query: () => ({
                 url: 'passwords',
                 method: 'GET'
-            })
+            }),
+            providesTags: () => [{ type: 'Passwords' as never, id: 'LIST'}]
         }),
         createPassword: builder.mutation<void, PasswordParams> ({
             query: (body: PasswordParams) => ({
                 url: 'passwords',
                 method: 'POST',
                 body
-            })
+            }),
+            invalidatesTags: [{ type: 'Passwords' as never, id: 'LIST' }],
+        }),
+        getAllCards: builder.query<Card[], void> ({
+            query: () =>({
+                url: 'cards',
+                method: 'GET'
+            }),
+            providesTags: () => [{ type: 'Card' as never, id: 'LIST' }]
+        }),
+        createCard: builder.mutation<void, CardParam> ({
+            query: (body: CardParam) => ({
+                url: 'cards',
+                method: 'POST',
+                body
+            }),
+            invalidatesTags: () => [{ type: 'Card' as never, id: 'LIST'}]
+        }),
+        update: builder.mutation<void, { id: string, body: CardParam }> ({
+            query: ({id, body}) => ({
+                url: `cards/${id}`,
+                method: 'PATCH',
+                body
+            }),
+            invalidatesTags: () => [{ type: 'Card' as never, id: 'LIST'}]
+        }),
+        deleteCard: builder.mutation<void, string> ({
+            query: (id: string) => ({
+                url: `cards/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: [{ type: 'Card' as never, id: 'LIST' }],
         })
     }),
 })
@@ -39,4 +71,11 @@ export const psNoteApi = createApi({
 
 
 
-export const { useGetAllPasswordsQuery, useCreatePasswordMutation } = psNoteApi
+export const {
+    useGetAllPasswordsQuery,
+    useCreatePasswordMutation,
+    useGetAllCardsQuery,
+    useCreateCardMutation,
+    useDeleteCardMutation ,
+    useUpdateMutation
+} = psNoteApi

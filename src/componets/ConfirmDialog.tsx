@@ -1,6 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import './css/dialogs.css'
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 interface confirmDialogProps {
     isOpen: boolean, 
@@ -29,6 +30,9 @@ export const ConfirmDialog = ({ isOpen, closeDialog, confirmDialog, title, body 
                                 leaveTo="dialog-animation-leave-to"
                             >
                                 <Dialog.Panel className='dialog-panel'>
+                                    <div className="icon">
+                                        <ExclamationTriangleIcon width={30} height={30} />
+                                    </div>
                                     <Dialog.Title as="h3">{ title }</Dialog.Title>
                                     <div className="dialog-body">
                                         <p className="text-sm text-gray-500">

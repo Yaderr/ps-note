@@ -1,40 +1,21 @@
-import { PlusIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
-import { PasswordForm } from './PasswordForm'
-import './css/createNewButtonModal.css'
-import { CardForm } from '.'
+import { Dialog, Transition } from "@headlessui/react"
+import { Card } from "../interface"
+import { Fragment } from "react"
+import { CardForm } from "."
+import { XMarkIcon } from "@heroicons/react/24/outline"
 
-interface CreateNewButtonModalProps {
-    type: string
+interface EditCardModalProps {
+    card: Card,
+    isOpen: boolean,
+    closeModal: () => void
 }
 
-
-export const CreateNewButtonModal = ({ type }: CreateNewButtonModalProps) => {
+export const EditCardModal = ({ card, isOpen, closeModal }: EditCardModalProps) => {
     
-    const FORMS_COMPONENTS: { [key:string]: JSX.Element } = {
-        'Password': <PasswordForm />,
-        'Card': <CardForm />
-    }
     
-    const [isOpen, setIsOpen] = useState(false)
-
-    const openModal = () => {
-        setIsOpen(true)
-    }
-
-    const closeModal = () => {
-        setIsOpen(false)
-    }
-
     return (
         <>
-            <div className='create-new-top-button'>
-                <button onClick={openModal}>
-                    <PlusIcon width={20} height={20} strokeWidth={2} />
-                    { type }
-                </button>
-            </div>
+            
             <Transition 
                 show={isOpen} 
                 appear
@@ -56,9 +37,7 @@ export const CreateNewButtonModal = ({ type }: CreateNewButtonModalProps) => {
                                         <XMarkIcon strokeWidth={2} width={20} height={20} />
                                     </button>
                                 </div>
-                                {
-                                   FORMS_COMPONENTS[type] 
-                                }
+                                <CardForm card={card} />
                             </Dialog.Panel>
                         </div>
                     </div>
