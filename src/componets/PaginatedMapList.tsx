@@ -25,7 +25,7 @@ export const PaginatedMapList= <T extends { id: string }>({
             {
                 isLoading ? (<Loader />)
                 :error ? (<NetworkError error={error} reload={refetch} />)
-                :data && data.results ? (
+                :data && data.results.length ? (
                     <>
                         {
                             data.results.map((item: T) => (

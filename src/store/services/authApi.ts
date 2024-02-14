@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { LoginParams, LoginResponse } from "../../interface"
+import { LoginParams, LoginResponse, SignupParams, User } from "../../interface"
 
 const {
     VITE_PS_NOTE_API_BASE_URL
@@ -15,12 +15,19 @@ export const authApi = createApi({
     endpoints: (builder) => ({
         login: builder.mutation<LoginResponse, LoginParams>({
             query: (body: LoginParams) => ({
-              url: 'auth/login',
-              method: 'POST',
-              body
+                url: 'auth/login',
+                method: 'POST',
+                body
+            })
+        }),
+        signUp: builder.mutation<User, SignupParams>({
+            query: (body: SignupParams) => ({
+                url: 'auth/register',
+                method: 'POST',
+                body
             })
         })
     })
 })
 
-export const { useLoginMutation } = authApi
+export const { useLoginMutation, useSignUpMutation } = authApi

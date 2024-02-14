@@ -1,3 +1,4 @@
+import { Password } from './password';
 export interface User {
     id: string,
     fullName: string,
@@ -14,4 +15,11 @@ export interface LoginParams {
 export interface LoginResponse {
     user: User,
     access_token: string
+}
+
+export interface SignupParams {
+    fullName: string,
+    email: string,
+    password: string,
+    repeat_password?: string
 }
