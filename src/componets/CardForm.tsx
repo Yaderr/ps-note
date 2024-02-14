@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Card, CardParam } from "../interface"
 import { CardInput, Spinner, startWithNetwork } from "."
-import { useCreateCardMutation, useUpdateMutation } from "../store/services/psNoteApi"
+import { useCreateCardMutation, useUpdateCardMutation } from "../store/services/psNoteApi"
 import { AlertError } from "./AlertError"
 import { SuccessMessage } from "./SuccessMessage"
 
@@ -12,7 +12,7 @@ interface CardFormProps {
 export const CardForm = ({ card: initialValue}: CardFormProps) => {
 
     const [createCard, { isLoading, error, isSuccess }] = useCreateCardMutation()
-    const [updateCard, { isLoading: isLoadingUpadate, error: errorUpdate, isSuccess: isSuccessUpdate}] = useUpdateMutation()
+    const [updateCard, { isLoading: isLoadingUpadate, error: errorUpdate, isSuccess: isSuccessUpdate}] = useUpdateCardMutation()
 
     const [formatCardNumber, setformatCardNumber] = useState('')
     const [card, setCard] = useState<CardParam>({
@@ -75,7 +75,7 @@ export const CardForm = ({ card: initialValue}: CardFormProps) => {
                         <input value={ card.sec_code } onChange={ inputChange } type="number" min={0} max={9999} name="sec_code" id="cvv" placeholder='cvv' required />
                         <input value={ card.expire } onChange={ inputChange } type="date" name="expire" id="expire-date" placeholder='00/2029' required />
                     </div>
-                    <button disabled={ isLoading } type="submit">
+                    <button disabled={ isLoading || isLoadingUpadate} type="submit">
                         { 
                             isLoading || isLoadingUpadate ? <Spinner />
                             : btnLegend

@@ -1,22 +1,26 @@
 import { BaseQueryFn, TypedUseQueryHookResult } from '@reduxjs/toolkit/query/react';
-import { useGetAllPasswordsQuery } from "../store/services/psNoteApi"
+import { PaginatedParams, useSearchPasswordQuery } from "../store/services/psNoteApi"
 import { Password } from "../interface";
 import { PasswordItem } from './PasswordItem';
-import { MapList } from "./MapList"
 import { PasswordListLoader } from "./loaders"
 import { EmptyMessage } from './loaders/EmptyMessage';
 import { LockClosedIcon } from '@heroicons/react/24/outline';
+import { PaginatedMapList } from './PaginatedMapList';
+import { PaginatedResponse } from '../interface/index';
 import './css/passwordList.css'
 
-export const PasswordsList = () => {
+export const PaginatedPasswordList = () => {
 
     const getAllPasswordsQuery: TypedUseQueryHookResult<
-        Password[], void, BaseQueryFn
-    > = useGetAllPasswordsQuery()
+        PaginatedResponse<Password[]>, PaginatedParams, BaseQueryFn
+    > = useSearchPasswordQuery({
+        page: 1,
+        pageSize: 1000000
+    })
     
     return (
         <div className="password-list">
-            <MapList<Password>
+            <PaginatedMapList<Password>
                 queryResult={getAllPasswordsQuery}
                 ElementItemComponent={ PasswordItem }
                 Loader={ PasswordListLoader }

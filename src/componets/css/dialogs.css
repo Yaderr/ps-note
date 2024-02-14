@@ -77,7 +77,7 @@
 .confirm-dialog .dialog-body p {
     color: var(--black-500);
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .confirm-dialog .dialog-body {

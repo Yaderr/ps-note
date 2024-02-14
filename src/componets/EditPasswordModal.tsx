@@ -1,23 +1,23 @@
 import { Dialog, Transition } from "@headlessui/react"
-import { Card } from "../interface"
-import { Fragment } from "react"
-import { CardForm } from "."
-import { XMarkIcon } from "@heroicons/react/24/outline"
+import { Password } from "../interface"
+import { PasswordForm } from './PasswordForm';
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import { Fragment } from "react";
 
 interface EditCardModalProps {
-    card: Card,
+    password: Password,
     isOpen: boolean,
     closeModal: () => void
 }
 
-export const EditCardModal = ({ card, isOpen, closeModal }: EditCardModalProps) => {
-    
-    
+export const EditPasswordModal = ({ password, isOpen, closeModal }: EditCardModalProps) => {
+
+
+
     return (
         <>
-            
             <Transition
-                show={isOpen}
+                show={isOpen} 
                 appear
                 enter=""
                 enterFrom=""
@@ -37,7 +37,7 @@ export const EditCardModal = ({ card, isOpen, closeModal }: EditCardModalProps) 
                                         <XMarkIcon strokeWidth={2} width={20} height={20} />
                                     </button>
                                 </div>
-                                <CardForm card={card} />
+                                <PasswordForm password={ password } />
                             </Dialog.Panel>
                         </div>
                     </div>

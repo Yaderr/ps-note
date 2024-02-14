@@ -47,6 +47,10 @@ const CUS_ERRORS: {[key: string | number]: ErrorItemType} = {
         icon:  ExclamationTriangleIcon,
         message: 'Something went wrong. try reloading'
     },
+    500: {
+        icon: InformationCircleIcon,
+        message: 'An unexpected error has occurred. try again later.'
+    },
     501: {
         icon: InformationCircleIcon,
         message: 'An unexpected error has occurred. try again later.'

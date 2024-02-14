@@ -1,6 +1,7 @@
 import { CardList, CreditCard, PasswordsList, SectionTitle } from '../../componets'
 import { UserProfile } from '../../componets/UserProfile'
 import { useAuth } from '../../hooks/useAuth'
+import { CC_TYPE } from '../../interface'
 import '../css/home.css'
 
 export const Home = () => {
@@ -19,12 +20,14 @@ export const Home = () => {
                 </div>
             </header>
             <main className='home-main-content'>
-                {/* <section>
+                <section>
                     <SectionTitle title='Cards' name='cards' redirectTo='/cards' />
                     <CreditCard number={Number('01234567896325878')} expire={new Date("11/01/2025")} sec_code={123} type={CC_TYPE.VISA} />
-                    <CreditCard number={Number('2123456789632587')} expire={new Date("11/01/2025")} sec_code={123} type={CC_TYPE.MASTER} />
+                    {/* <CreditCard number={Number('2123456789632587')} expire={new Date("11/01/2025")} sec_code={123} type={CC_TYPE.MASTER} />
                     <CreditCard number={Number('3123456789632587')} expire={new Date("11/01/2025")} sec_code={123} type={CC_TYPE.AMEX} />
-                </section> */}
+                    <CreditCard number={Number('3123456789632587')} expire={new Date("11/01/2025")} sec_code={123} type={CC_TYPE.DISCO} /> */}
+
+                </section>
                 <section>
                     <SectionTitle title='Passwords' name='passwords' redirectTo='/passwords' />
                     <PasswordsList />

@@ -49,3 +49,12 @@
 li {
     margin-bottom: 5px;
 }
+
+.bottom-alert-text a {
+    color: var(--primary-background);
+    display: inline;
+}
+
+.bottom-alert-text a:hover {
+    color: var(--tertiary-color);
+}

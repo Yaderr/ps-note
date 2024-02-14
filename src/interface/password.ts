@@ -14,6 +14,7 @@ export interface Password {
 }
 
 export interface PasswordParams {
+    id?: string,
     title: string,
     websiteUrl: string,
     userNameEmail: string,

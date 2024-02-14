@@ -1,10 +1,17 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { Card, CardParam, Password, PasswordParams } from "../../interface"
+import { Card, CardParam, PaginatedResponse, Password, PasswordParams } from "../../interface"
 import { RootState } from "../store"
 
 const {
     VITE_PS_NOTE_API_BASE_URL
 } = import.meta.env
+
+export interface PaginatedParams {
+    q?: string,
+    orderBy?: string,
+    page?: number,
+    pageSize?: number
+}
 
 export const psNoteApi = createApi({
     reducerPath: 'psNoteApi',
@@ -19,13 +26,22 @@ export const psNoteApi = createApi({
         },
         
     }),
+    tagTypes: ['Passwords', 'Card'],
     endpoints: (builder) => ({
         getAllPasswords: builder.query<Password[], void> ({
             query: () => ({
                 url: 'passwords',
                 method: 'GET'
             }),
-            providesTags: () => [{ type: 'Passwords' as never, id: 'LIST'}]
+            providesTags: [{ type: 'Passwords', id: 'LIST'}]
+        }),
+        searchPassword: builder.query<PaginatedResponse<Password[]>, PaginatedParams> ({
+            query: (query) =>({
+                url: 'passwords/search',
+                method: 'GET',
+                params: query
+            }),
+            providesTags: [{ type: 'Passwords', id: 'SERACH-LIST' }]
         }),
         createPassword: builder.mutation<void, PasswordParams> ({
             query: (body: PasswordParams) => ({
@@ -33,14 +49,37 @@ export const psNoteApi = createApi({
                 method: 'POST',
                 body
             }),
-            invalidatesTags: [{ type: 'Passwords' as never, id: 'LIST' }],
+            invalidatesTags: [{ type: 'Passwords', id: 'LIST' }, { type: 'Passwords', id: 'SERACH-LIST' }],
+        }),
+        updatePassword: builder.mutation<void, { id: string, body: PasswordParams }> ({
+            query: ({ id, body }) => ({
+                url: `passwords/${id}`,
+                method: 'PATCH',
+                body
+            }),
+            invalidatesTags: [{ type: 'Passwords', id: 'LIST' }, { type: 'Passwords', id: 'SERACH-LIST' }]
+        }),
+        deletePassword: builder.mutation<void, string> ({
+            query: (id: string) => ({
+                url: `passwords/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: [{ type: 'Passwords', id: 'LIST' }]
         }),
         getAllCards: builder.query<Card[], void> ({
             query: () =>({
                 url: 'cards',
                 method: 'GET'
             }),
-            providesTags: () => [{ type: 'Card' as never, id: 'LIST' }]
+            providesTags: [{ type: 'Card', id: 'LIST' }]
+        }),
+        searchCards: builder.query<PaginatedResponse<Card[]>, PaginatedParams> ({
+            query: (query) =>({
+                url: 'cards/search',
+                method: 'GET',
+                params: query
+            }),
+            providesTags: [{ type: 'Card', id: 'SERACH-LIST' }]
         }),
         createCard: builder.mutation<void, CardParam> ({
             query: (body: CardParam) => ({
@@ -48,22 +87,22 @@ export const psNoteApi = createApi({
                 method: 'POST',
                 body
             }),
-            invalidatesTags: () => [{ type: 'Card' as never, id: 'LIST'}]
+            invalidatesTags: [{ type: 'Card', id: 'LIST'}, { type: 'Card', id: 'SERACH-LIST' }]
         }),
-        update: builder.mutation<void, { id: string, body: CardParam }> ({
+        updateCard: builder.mutation<void, { id: string, body: CardParam }> ({
             query: ({id, body}) => ({
                 url: `cards/${id}`,
                 method: 'PATCH',
                 body
             }),
-            invalidatesTags: () => [{ type: 'Card' as never, id: 'LIST'}]
+            invalidatesTags:  [{ type: 'Card', id: 'LIST'}, { type: 'Card', id: 'SERACH-LIST' }]
         }),
         deleteCard: builder.mutation<void, string> ({
             query: (id: string) => ({
                 url: `cards/${id}`,
                 method: 'DELETE'
             }),
-            invalidatesTags: [{ type: 'Card' as never, id: 'LIST' }],
+            invalidatesTags: [{ type: 'Card', id: 'LIST' }],
         })
     }),
 })
@@ -77,5 +116,9 @@ export const {
     useGetAllCardsQuery,
     useCreateCardMutation,
     useDeleteCardMutation ,
-    useUpdateMutation
+    useUpdateCardMutation,
+    useUpdatePasswordMutation,
+    useDeletePasswordMutation,
+    useSearchCardsQuery,
+    useSearchPasswordQuery
 } = psNoteApi

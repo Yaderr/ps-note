@@ -1,4 +1,4 @@
-import { CardList, CreateNewButtonModal } from "../../componets"
+import { CreateNewButtonModal, PaginatedCardList } from "../../componets"
 
 
 export const Card = () => {
@@ -9,7 +9,7 @@ export const Card = () => {
                 <h2>Cards</h2>
                 <CreateNewButtonModal type="Card" />
             </div>
-            <CardList />
+            <PaginatedCardList />
         </div>
         
     )

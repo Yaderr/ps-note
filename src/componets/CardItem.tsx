@@ -1,18 +1,16 @@
-import { EllipsisVerticalIcon, PencilIcon, Square2StackIcon, TrashIcon, cop } from '@heroicons/react/24/outline'
-import { Card } from '../interface'
 import { Menu, Transition } from '@headlessui/react'
+import { EllipsisVerticalIcon, PencilIcon, Square2StackIcon, TrashIcon } from '@heroicons/react/24/outline'
 import { Fragment, useState } from 'react'
 import { ConfirmDialog } from '.'
-import { useNavigate } from 'react-router-dom'
-import './css/cardItem.css'
 import { useDeleteCardMutation } from '../store/services/psNoteApi'
 import { EditCardModal } from './EditCardModal'
-import { Btn } from './Btn'
+import { Card } from '../interface'
+import './css/cardItem.css'
 
 export const CardItem = (card: Card) => {
 
     const numLength = card.number.toString().length
-    const anonNumber = '**** '.repeat((numLength-4)/4)+card.number.toString().substring(numLength-4) 
+    const anonNumber = '**** '.repeat((numLength-4)/4)+card.number.toString().substring(numLength-4)
     
     return (
         <div className='item-container'>
@@ -38,8 +36,6 @@ export const CardItem = (card: Card) => {
 
 const ActionMenu = ({ card }: { card: Card }) => {
 
-    
-    const navigate = useNavigate()
     const [remove] = useDeleteCardMutation()
     
     // Edit Modal

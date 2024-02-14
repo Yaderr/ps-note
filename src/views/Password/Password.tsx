@@ -1,4 +1,4 @@
-import { CreateNewButtonModal, PasswordsList } from "../../componets"
+import { CreateNewButtonModal, PaginatedPasswordList } from "../../componets"
 
 export const Password = () => {
 
@@ -8,7 +8,7 @@ export const Password = () => {
                 <h2>Passwords</h2>
                 <CreateNewButtonModal type="Password" />
             </div>
-            <PasswordsList />
+            <PaginatedPasswordList />
         </div>
     )
 }

@@ -4,7 +4,7 @@
 .card-item {
     display: flex;
     flex-direction: row;
-    min-width: 350px;
+    width: 350px;
     justify-content: space-between;
 }
 .cards-icon-details {
@@ -33,10 +33,6 @@
 
 .details p {
     margin: 5px 0 0 0;
-}
-
-.details {
-    min-width: 250px;
 }
 
 .card-icon-action {
@@ -101,6 +97,9 @@
     border-radius: 5px;
     font-size: 0.85rem;
     font-weight: 500;
+    transition-property: background-color, color;
+    transition-duration: 150ms;
+    transition-timing-function: ease-in-out;
 }
 
 .action-menu .menu-items {
