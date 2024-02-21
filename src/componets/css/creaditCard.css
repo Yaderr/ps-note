@@ -1,10 +1,11 @@
 .credit-card {
+    z-index: -9999;
     width: 400px;
     height: 200px;
     background-color: var(--primary-color);
     color: var(--primary-background);
     border-radius: 1.2rem;
-    padding: 20px;
+    padding: 20px 0 20px 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -27,6 +28,9 @@
 .credit-card .card-header {
     display: flex;
     justify-content: space-between;
+    position: relative;
+    margin-top: -130px;
+    padding: 0 20px 0 0;
 }
 
 .credit-card .brand-logo {
@@ -48,12 +52,10 @@
 }
 
 .right-top-corner {
-    position: absolute;
+    position: relative;
     margin-left: 234px;
     margin-top: -20px;
-    border-top-right-radius: 10px;
-    
-    
+    border-top-right-radius: 19px;
 }
 
 .card-details {
