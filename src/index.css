@@ -59,6 +59,19 @@
   --chablis-900: rgb(127 29 29);
   --chablis-950: rgb(69 10 10);
 
+  --lightning-yellow-50: rgb(253 251 233);
+  --lightning-yellow-100: rgb(252 247 197);
+  --lightning-yellow-200: rgb(250 237 142);
+  --lightning-yellow-300: rgb(247 219 77);
+  --lightning-yellow-400: rgb(243 199 28);
+  --lightning-yellow-500: rgb(239 184 16);
+  --lightning-yellow-600: rgb(196 135 10);
+  --lightning-yellow-700: rgb(156 97 12);
+  --lightning-yellow-800: rgb(129 77 18);
+  --lightning-yellow-900: rgb(110 63 21);
+  --lightning-yellow-950: rgb(64 32 8);
+
+
 }
 
 body {
@@ -72,6 +85,7 @@ body {
   --succes-color: var(--emerald-500);
   --error-background: var(--chablis-200);
   --error-color: var(--chablis-500);
+  --yellow-fav: var(--lightning-yellow-500)
   /* 
   --tertiary-color: var(--gray-80);
   --quaternary-color: var(--gray-75);

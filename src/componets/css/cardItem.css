@@ -135,3 +135,31 @@
     opacity: 0;
     transform: scale(.95);
 }
+.item+.fav-active svg, .fav-active {
+    fill: var(--yellow-fav);
+    stroke: var(--yellow-fav);
+}
+
+.item+.fav-active {
+    color: var(--yellow-fav);
+}
+
+
+.item+.fav:hover > svg {
+    fill: var(--yellow-fav);
+    stroke: var(--yellow-fav);
+    
+}
+
+.item+.fav:hover {
+    color: var(--yellow-fav);
+}
+
+.item+.fav-active:hover > svg {
+    stroke: var(--primary-background);
+    fill: none;
+}
+
+.item+.fav-active:hover {
+    color: var(--primary-background);
+}

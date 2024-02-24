@@ -1,8 +1,8 @@
 import { Menu, Transition } from '@headlessui/react'
-import { EllipsisVerticalIcon, PencilIcon, Square2StackIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { EllipsisVerticalIcon, PencilIcon, Square2StackIcon, StarIcon, TrashIcon } from '@heroicons/react/24/outline'
 import { Fragment, useState } from 'react'
 import { ConfirmDialog } from '.'
-import { useDeleteCardMutation } from '../store/services/psNoteApi'
+import { useDeleteCardMutation, useUpdateCardMutation } from '../store/services/psNoteApi'
 import { EditCardModal } from './EditCardModal'
 import { Card } from '../interface'
 import './css/cardItem.css'
@@ -37,6 +37,7 @@ export const CardItem = (card: Card) => {
 const ActionMenu = ({ card }: { card: Card }) => {
 
     const [remove] = useDeleteCardMutation()
+    const [updateCard] = useUpdateCardMutation()
     
     // Edit Modal
     const [isOpenEditModal, setIsOpenEditModal] = useState(false)
@@ -65,6 +66,10 @@ const ActionMenu = ({ card }: { card: Card }) => {
         await remove(card.id)
         setIsOpenConfirmDialog(false)
     }
+
+    const fav = () => {
+        updateCard({ id: card.id, body: { isFav: !card.isFav }})
+    }
     
     return (
         <div className='action-menu'>
@@ -81,6 +86,7 @@ const ActionMenu = ({ card }: { card: Card }) => {
                 closeModal={ closeEditModal } 
             />
             <Menu as="div" className='menu'>
+                    {card.isFav && <StarIcon className='fav-active' width={25} height={25} />}
                 <Menu.Button> 
                     <EllipsisVerticalIcon width={25} height={25} />
                 </Menu.Button>
@@ -99,6 +105,12 @@ const ActionMenu = ({ card }: { card: Card }) => {
                                 <Square2StackIcon width={18} height={18} />
                                 Copy
                             </button>            
+                        </Menu.Item>
+                        <Menu.Item>
+                            <button onClick={ fav } className={`item fav ${card.isFav && 'fav-active'}`}>
+                                <StarIcon width={18} height={18} />
+                                { card.isFav ? 'Unstar': 'Star'}
+                            </button>
                         </Menu.Item>
                         <Menu.Item >
                             <button className='item' onClick={ openEditModal }>

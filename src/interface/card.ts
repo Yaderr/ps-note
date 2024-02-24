@@ -15,6 +15,7 @@ export interface Card {
     expire: string,
     sec_code: string,
     type: CC_TYPE,
+    isFav: boolean
 }
 
 export interface CardParam {
@@ -24,4 +25,5 @@ export interface CardParam {
     expire: string,
     sec_code: string,
     type: CC_TYPE | undefined,
+    isFav?: boolean
 }
