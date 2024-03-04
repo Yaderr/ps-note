@@ -1,13 +1,29 @@
+import { useGetFavoritesCardsQuery } from "../store/services/psNoteApi"
 import { CreditCard } from "."
-import { CC_TYPE } from "../interface"
+import { NetworkError } from "./NetworkError"
 import './css/carousel.css'
+import { CardCarouselLoader } from "./loaders"
 
 export const CardCarousel = () => {
+
+    const { data, error, isLoading, refetch } = useGetFavoritesCardsQuery()
+
     return (
-        <div className="card-carousel">
-            <CreditCard number={Number('01234567896325878')} expire={new Date("11/01/2025")} sec_code={123} type={CC_TYPE.VISA} />
-            <CreditCard number={Number('2123456789632587')} expire={new Date("11/01/2025")} sec_code={654} type={CC_TYPE.MASTER} />
-            <CreditCard number={Number('2123456789632587')} expire={new Date("11/01/2025")} sec_code={123} type={CC_TYPE.MASTER} />
-        </div>
+        isLoading ? (
+            <CardCarouselLoader />
+        )
+        :error ? (<NetworkError error={error} reload={refetch} />)
+        :data && data.length ? (
+            <div className="card-carousel">
+                {
+                    data.map(card => (
+                        <CreditCard key={card.id} number={card.number} expire={card.expire} sec_code={card.sec_code} type={card.type} />
+                    ))
+                }
+            </div>
+        )
+        : (
+           <></>                                            
+        )
     )
 }

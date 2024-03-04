@@ -81,6 +81,12 @@ export const psNoteApi = createApi({
             }),
             providesTags: [{ type: 'Card', id: 'SERACH-LIST' }]
         }),
+        getFavoritesCards: builder.query<Card[], void> ({
+            query: () => ({
+                url: 'cards/favorites'
+            }),
+            providesTags: [{type: 'Card', id: 'FAV-LIST'}]
+        }),
         createCard: builder.mutation<void, CardParam> ({
             query: (body: CardParam) => ({
                 url: 'cards',
@@ -95,14 +101,18 @@ export const psNoteApi = createApi({
                 method: 'PATCH',
                 body
             }),
-            invalidatesTags:  [{ type: 'Card', id: 'LIST'}, { type: 'Card', id: 'SERACH-LIST' }]
+            invalidatesTags:  [
+                { type: 'Card', id: 'LIST' },
+                { type: 'Card', id: 'SERACH-LIST' },
+                { type: 'Card', id: 'FAV-LIST'}
+            ]
         }),
         deleteCard: builder.mutation<void, string> ({
             query: (id: string) => ({
                 url: `cards/${id}`,
                 method: 'DELETE'
             }),
-            invalidatesTags: [{ type: 'Card', id: 'LIST' }],
+            invalidatesTags: [{ type: 'Card', id: 'LIST' }, { type: 'Card', id: 'FAV-LIST' }],
         })
     }),
 })
@@ -120,5 +130,6 @@ export const {
     useUpdatePasswordMutation,
     useDeletePasswordMutation,
     useSearchCardsQuery,
-    useSearchPasswordQuery
+    useSearchPasswordQuery,
+    useGetFavoritesCardsQuery
 } = psNoteApi
