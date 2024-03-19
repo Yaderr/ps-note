@@ -1,5 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Auth, SignupAuth, LoginAuth, MainLayoutView, Home, Card, Password, CreateLayoutView, CreateCard, CreatePassword } from "../views";
+import { 
+    Auth,
+    SignupAuth,
+    LoginAuth,
+    MainLayoutView,
+    Home,
+    Card,
+    Password,
+    CreateLayoutView,
+    CreateCard,
+    CreatePassword,
+    Account
+} from "../views";
 
 export const router = createBrowserRouter([
     {
@@ -53,6 +65,10 @@ export const router = createBrowserRouter([
             {
                 path: 'passwords',
                 Component: Password
+            },
+            {
+                path: 'account',
+                Component: Account
             }
         ]
     }

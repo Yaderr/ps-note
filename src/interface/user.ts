@@ -1,4 +1,3 @@
-import { Password } from './password';
 export interface User {
     id: string,
     fullName: string,
@@ -22,4 +21,10 @@ export interface SignupParams {
     email: string,
     password: string,
     repeat_password?: string
+}
+
+export interface EditUserInfo {
+    fullName?: string,
+    email?: string,
+    profilePic?: string
 }

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { Card, CardParam, PaginatedResponse, Password, PasswordParams } from "../../interface"
+import { Card, CardParam, LoginParams, PaginatedResponse, Password, PasswordParams, User } from "../../interface"
 import { RootState } from "../store"
 
 const {
@@ -113,6 +113,26 @@ export const psNoteApi = createApi({
                 method: 'DELETE'
             }),
             invalidatesTags: [{ type: 'Card', id: 'LIST' }, { type: 'Card', id: 'FAV-LIST' }],
+        }),
+        editUserInfo: builder.mutation<User, Partial<User>> ({
+            query: (body: LoginParams) => ({
+                url: 'auth/user',
+                method: 'PATCH',
+                body
+            }),
+            
+        }),
+        upload: builder.mutation<{filePatch: string}, File>({
+            query: (body: File) => {
+                const bodyForm = new FormData()
+                bodyForm.append('file', body)
+                return {
+                    url: 'media/user/upload',
+                    method: 'POST',
+                    body: bodyForm ,
+                    
+                }
+            }
         })
     }),
 })
@@ -131,5 +151,7 @@ export const {
     useDeletePasswordMutation,
     useSearchCardsQuery,
     useSearchPasswordQuery,
-    useGetFavoritesCardsQuery
+    useGetFavoritesCardsQuery,
+    useEditUserInfoMutation,
+    useUploadMutation
 } = psNoteApi

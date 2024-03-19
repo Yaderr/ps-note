@@ -69,34 +69,15 @@
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
-.edit-profile-pic .edit-icon {
-   
-}
-
-.user-profile .panel input {
-    display: none;
-}
-
-.edit-profile-pic {
-    display: flex;
-    justify-content: center;
-}
-
-.user-profile .panel label {
-    display: flex;
-    width: 60px;
-    height: 60px;
-    background-position: center;
-    background-size: cover;
-    cursor: pointer;
-    border-radius: 100%;
-    margin-bottom: 10px;
-    justify-content: end;
-    align-items: end;
-}
-
 .user-profile .panel label svg {
     margin-right: -5px;
+}
+
+.prof-pic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
 }
 
 

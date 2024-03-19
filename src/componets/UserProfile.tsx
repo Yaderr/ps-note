@@ -1,13 +1,17 @@
 import { Popover, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { User } from '../interface'
-import { PencilIcon } from '@heroicons/react/24/solid'
 import { useDispatch } from 'react-redux'
 import { logOut } from '../store/slice/authSlice'
+import { ProfilePicInput } from './account/ProfilePicInput'
 
 interface userProfileProps {
 	user: User
 }
+
+const {
+    VITE_PS_NOTE_API_BASE_URL
+} = import.meta.env
 
 export const UserProfile = ({ user }: userProfileProps) => {
 
@@ -20,7 +24,7 @@ export const UserProfile = ({ user }: userProfileProps) => {
 				{() => (
 					<>
 						<Popover.Button>
-							<img src={ user?.profilePic} alt="" />
+							<img src={ `${VITE_PS_NOTE_API_BASE_URL}/media/${user.profilePic}` } alt="" />
 						</Popover.Button>
 						<Transition
 							as={Fragment} enter="enter"
@@ -53,11 +57,10 @@ const Panel = ({ fullName, profilePic, lastLogin }: User) => {
 	return (
 		<div className='panel'>
 			<div className="user-name">
-				<div className="edit-profile-pic">					
-					<input type="file" name="input-profilepic" id="input-profilepic" />
-					<label style={{ backgroundImage: `url(${profilePic})` }} htmlFor="input-profilepic">
-						<PencilIcon width={20} height={20} />
-					</label>
+				<div className='prof-pic'>
+					<div className="pic">
+					<ProfilePicInput picture={ profilePic } />
+					</div>
 				</div>
 				<span>{ fullName }</span>
 				<p>Last login { new Date(lastLogin).toLocaleString('es') }</p>

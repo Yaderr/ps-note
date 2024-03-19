@@ -4,17 +4,25 @@ import { LoginResponse } from '../../interface/user';
 import type { PayloadAction } from "@reduxjs/toolkit/react"
 
 export type AuthState = {
-    user: User | null,
-    token: string | null
+    user: User | undefined,
+    token: string |undefined
 }
 
 export const authSlice = createSlice({
     name: 'auth',
-    initialState: { user: null, token: null } as AuthState,
+    initialState: { user: undefined, token: undefined } as AuthState,
     reducers: {
         setCredentials: (state, { payload: { user, access_token } }: PayloadAction<LoginResponse>) => {
             state.user = user
             state.token = access_token
+        },
+        updatePicture: (state, { payload: {filePatch} }: PayloadAction<{ filePatch: string }>) => {
+            state.user.profilePic = filePatch
+        },
+        updateUserInfo: (state, { payload: { fullName, email, profilePic } }: PayloadAction<User>) => {
+            state.user.fullName = fullName
+            state.user.email = email
+            state.user.profilePic = profilePic
         },
         logOut: (state) => {
             state.user = null
@@ -23,4 +31,4 @@ export const authSlice = createSlice({
     }
 })
 
-export const { setCredentials, logOut } = authSlice.actions
+export const { setCredentials, logOut, updateUserInfo, updatePicture } = authSlice.actions
