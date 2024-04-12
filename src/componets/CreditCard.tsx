@@ -2,7 +2,6 @@ import { EyeIcon, EyeSlashIcon, Square2StackIcon, TrashIcon } from '@heroicons/r
 import './css/creditCard.css'
 import { CC_TYPE } from '../interface'
 import { useToggler } from '../hooks/useToggler'
-import { EyeDropperIcon } from '@heroicons/react/24/outline'
 
 interface CreditCardProps {
     number: string,

@@ -1,9 +1,9 @@
-import { ArrowTopRightOnSquareIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
+import { CheckCircleIcon } from '@heroicons/react/24/outline'
 import './css/alert.css'
 
 interface AletProps {
     isOpen: boolean,
-    link: stirng
+    link: string
 }
 
 export const BottomAlert = ({ isOpen, link }: AletProps) => {

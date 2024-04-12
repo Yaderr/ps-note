@@ -7,10 +7,21 @@ import { useDispatch } from "react-redux"
 import { updateUserInfo } from "../../store/slice/authSlice"
 import { AlertError } from "../AlertError"
 
+export interface DefErrorData {
+    error: string
+}
 
+export interface ErrorData {
+    data: {
+        error: string,
+        message: string[],
+        statusCode: number
+    },
+    status: number
+}
 export const ProfileDataForm = (user: User) => {
 
-    const [editUserInfo, { data, isLoading, isSuccesss, error }] = useEditUserInfoMutation()
+    const [editUserInfo, { isLoading, error }] = useEditUserInfoMutation()
     const dispatch = useDispatch()
 
     const[updateUser, setUpdateUser] = useState<EditUserInfo>({
@@ -21,6 +32,7 @@ export const ProfileDataForm = (user: User) => {
     const submitForm = async (event: React.ChangeEvent<HTMLFormElement>) => {
         event.preventDefault()
         const response = await editUserInfo(updateUser).unwrap()
+        console.log(error)
         dispatch(updateUserInfo(response))
     }
 
@@ -37,7 +49,10 @@ export const ProfileDataForm = (user: User) => {
                 </div>
             </div>
             <form onSubmit={submitForm}>
-                <AlertError errorMessage={ error ? ( 'data' in error && error.data['message'])?error.data['message']: error?.error : null } />
+
+                { error && <AlertError
+                    errorMessage={ (error as DefErrorData)?.error ? (error as DefErrorData)?.error: (error as ErrorData).data.message ? (error as ErrorData)?.data?.message: 'ERROr' } 
+                />}
                 <input onChange={onInputChange} value={updateUser.fullName} type="text" name="fullName" id="fullName" placeholder="Full Name" />
                 <input onChange={onInputChange} value={updateUser.email} type="email" name="email" id="email" placeholder="Email" />
                 <button type="submit">

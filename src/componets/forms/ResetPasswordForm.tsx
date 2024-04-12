@@ -5,6 +5,7 @@ import { useChangePasswordMutation } from "../../store/services/authApi"
 import { Spinner } from "./LoginForm"
 import { AlertError } from "../AlertError"
 import { SuccessMessage } from "../SuccessMessage"
+import { DefErrorData, ErrorData } from "../account/ProfileDataForm"
 
 export const ResetPasswordForm = () => {
 
@@ -33,13 +34,15 @@ export const ResetPasswordForm = () => {
     }
 
     if(isSuccess) {
-        return <SuccessMessage message={data.message} type="./auth/login" />
+        return <SuccessMessage message={data?.message ?? 'SuccessMessage'} type="./auth/login" />
     }
 
     return (
         <div className="form-container">
             <h2>Change password</h2>
-            <AlertError errorMessage={ error ? ( 'data' in error && error.data['message'])?error.data['message']: error?.error : null } />
+            { error && <AlertError
+                errorMessage={ (error as DefErrorData)?.error ? (error as DefErrorData)?.error: (error as ErrorData).data.message ? (error as ErrorData)?.data?.message: 'ERROR' } 
+            />}
             <form onSubmit={submitForm}>
                 <PasswordInput value={ formData.oldPassword } onChange={inputChange} name='oldPassword' placeholder="Old password or Recovery hash" />
                 <PasswordInput value={ formData.newPassword } onChange={inputChange} name='newPassword' placeholder="New password" />

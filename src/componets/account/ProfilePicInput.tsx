@@ -14,7 +14,7 @@ const {
 
 export const ProfilePicInput = ({ picture }: ProfilePicInputProps) => {
 
-    const [upload, { isLoading, error, data }] = useUploadMutation()
+    const [upload, { error }] = useUploadMutation()
     const dispatch = useDispatch()
 
     const uploadPicture = async (event: React.ChangeEvent<HTMLInputElement>) => {

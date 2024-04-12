@@ -1,5 +1,4 @@
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline"
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline"
 
 export const RedirectButton = ({ link }: { link: string}) => {
 

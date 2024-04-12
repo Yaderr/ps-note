@@ -7,10 +7,11 @@ import { useSignUpMutation } from "../../store/services/authApi"
 import { AlertError } from "../AlertError"
 import { Spinner } from ".."
 import { SuccessMessage } from "../SuccessMessage"
+import { DefErrorData, ErrorData } from "../account/ProfileDataForm"
 
 export const SignupForm = () => {
 
-    const [signUp, { data, error, isLoading, isSuccess }] = useSignUpMutation()
+    const [signUp, { error, isLoading, isSuccess }] = useSignUpMutation()
     const [accountData, setAccountData] = useState<SignupParams>({
         fullName: '',
         email: '',
@@ -39,7 +40,9 @@ export const SignupForm = () => {
     return (
         <div className="form-container">
             <h2>Sign up</h2>
-            <AlertError errorMessage={ error ? ( 'data' in error && error.data['message'])?error.data['message']: error?.error : null } />
+            { error && <AlertError
+                    errorMessage={ (error as DefErrorData)?.error ? (error as DefErrorData)?.error: (error as ErrorData).data.message ? (error as ErrorData)?.data?.message: 'ERROr' } 
+                />}
             <form onSubmit={submit}>
                 <input value={accountData.fullName} onChange={onInputChange} type="text" name="fullName" placeholder='Full name' required />
                 <input value={accountData.email} onChange={onInputChange} type="email" name="email" placeholder='Email' required />

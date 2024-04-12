@@ -8,6 +8,7 @@ import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import './form.css'
+import { DefErrorData, ErrorData } from '../account/ProfileDataForm';
 
 export const LoginForm = () => {
 
@@ -36,7 +37,7 @@ export const LoginForm = () => {
     return (
         <div className='form-container'>
             <h2>Login</h2>
-            <ErrorAlert error={error} />
+            <ErrorAlert error={(error as ErrorData)} />
             <form onSubmit={ startLogin }>
                 <input onChange={ inputChange } type="email" name="email" placeholder='Email' required />
                 <PasswordInput value={formState.password} onChange={inputChange} />
@@ -73,14 +74,14 @@ export const Spinner = () => {
 }
 
 
-const ErrorAlert = ({ error }) => {
+const ErrorAlert = ({ error }: { error:  ErrorData}) => {
     if(error) {
         return (
             <div className='error-alert'>
                 <ExclamationTriangleIcon width={20} height={20} />
                 <p>
                     {
-                        'data' in error ? error.data.message : error.error
+                        'data' in error ? error.data.message : (error as DefErrorData)?.error
                     }
                 </p>
             </div>

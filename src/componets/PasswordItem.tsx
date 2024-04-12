@@ -126,6 +126,6 @@ const PasswordActionMenu = ({ id, link, openEditModal }: PasswordActionMenuProps
 }
 
 const PasswordIcon = ({ icon }: { icon?: string }) => ( //create component for icon images
-    icon ? <img onError={(a) => {}} src={icon} alt="" />
+    icon ? <img src={icon} alt="" />
     : <GlobeAltIcon />
 )

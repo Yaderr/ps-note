@@ -5,5 +5,5 @@ import { User } from "../interface";
 
 export const useAuth = (): User | null  => {
     const user = useSelector((state: RootState) => state.auth.user)
-    return useMemo(() => (user), [user])
+    return useMemo(() => (user ?? null), [user])
 }

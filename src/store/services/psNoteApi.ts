@@ -95,7 +95,7 @@ export const psNoteApi = createApi({
             }),
             invalidatesTags: [{ type: 'Card', id: 'LIST'}, { type: 'Card', id: 'SERACH-LIST' }]
         }),
-        updateCard: builder.mutation<void, { id: string, body: CardParam }> ({
+        updateCard: builder.mutation<void, { id: string, body: Partial<CardParam> }> ({
             query: ({id, body}) => ({
                 url: `cards/${id}`,
                 method: 'PATCH',

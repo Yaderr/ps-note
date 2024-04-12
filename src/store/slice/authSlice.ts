@@ -18,16 +18,18 @@ export const authSlice = createSlice({
             state.token = access_token
         },
         updatePicture: (state, { payload: {filePatch} }: PayloadAction<{ filePatch: string }>) => {
-            state.user.profilePic = filePatch
+            if(state.user) state.user.profilePic = filePatch
         },
         updateUserInfo: (state, { payload: { fullName, email, profilePic } }: PayloadAction<User>) => {
-            state.user.fullName = fullName
-            state.user.email = email
-            state.user.profilePic = profilePic
+            if(state.user != undefined) {
+                state.user.fullName = fullName
+                state.user.email = email
+                state.user.profilePic = profilePic
+            }
         },
         logOut: (state) => {
-            state.user = null
-            state.token = null
+            state.user = undefined
+            state.token = undefined
             psNoteApi.util.resetApiState()
         }
     }

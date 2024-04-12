@@ -5,6 +5,7 @@ import { PasswordInput } from "./input/PasswordInput"
 import { Spinner } from "."
 import { AlertError } from "./AlertError"
 import { SuccessMessage } from "./SuccessMessage"
+import { DefErrorData, ErrorData } from "./account/ProfileDataForm"
 
 interface PasswordFormParams {
     password?: Password
@@ -58,8 +59,12 @@ export const PasswordForm = ({ password: initialValue }: PasswordFormParams) => 
         <div className="password-form-container">
             <div className="password-form">
                 <form onSubmit={ password.id? submitUpdateForm: submitForm }>
-                    <AlertError errorMessage={ error ? ( 'data' in error && error.data['message'])?error.data['message']: error?.error : null } />
-                    <AlertError errorMessage={ errorUpdate ? ( 'data' in errorUpdate && errorUpdate.data['message'])?errorUpdate.data['message']: errorUpdate?.error : null } />
+                    { error && <AlertError
+                        errorMessage={ (error as DefErrorData)?.error ? (error as DefErrorData)?.error: (error as ErrorData).data.message ? (error as ErrorData)?.data?.message: 'ERROr' } 
+                    />}
+                    { error && <AlertError
+                        errorMessage={ (errorUpdate as DefErrorData)?.error ? (errorUpdate as DefErrorData)?.error: (errorUpdate as ErrorData).data.message ? (errorUpdate as ErrorData)?.data?.message: 'ERROr' } 
+                    />}
                     <input value={password.title} onChange={inputChange} type="text" name="title" id="title" placeholder='Title' />
                     <input value={password.websiteUrl} onChange={inputChange} type="text" name="websiteUrl" id="websiteUrl" placeholder='Website URL' />
                     <input value={password.userNameEmail} onChange={inputChange} type="text" name="userNameEmail" id="userNameEmail" placeholder='Username or Email' />

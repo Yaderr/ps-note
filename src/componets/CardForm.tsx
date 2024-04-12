@@ -4,6 +4,7 @@ import { CardInput, Spinner, startWithNetwork } from "."
 import { useCreateCardMutation, useUpdateCardMutation } from "../store/services/psNoteApi"
 import { AlertError } from "./AlertError"
 import { SuccessMessage } from "./SuccessMessage"
+import { DefErrorData, ErrorData } from "./account/ProfileDataForm"
 
 interface CardFormProps {
     card?: Card
@@ -67,8 +68,12 @@ export const CardForm = ({ card: initialValue}: CardFormProps) => {
         <div className="card-form-container">
             <div className="card-form">
                 <form onSubmit={ card.id ? submitUpdateForm : submitForm }>
-                    <AlertError errorMessage={ error ? ( 'data' in error && error.data['message'])?error.data['message']: error?.error : null } />
-                    <AlertError errorMessage={ errorUpdate ? ( 'data' in errorUpdate && errorUpdate.data['message'])?errorUpdate.data['message']: errorUpdate?.error : null } />
+                    { error && <AlertError
+                        errorMessage={ (error as DefErrorData)?.error ? (error as DefErrorData)?.error: (error as ErrorData).data.message ? (error as ErrorData)?.data?.message: 'ERROR' } 
+                    />}
+                    { errorUpdate && <AlertError
+                        errorMessage={ (errorUpdate as DefErrorData)?.error ? (errorUpdate as DefErrorData)?.error: (errorUpdate as ErrorData).data.message ? (errorUpdate as ErrorData)?.data?.message: 'ERROR' }
+                    />}
                     <input value={ card.title } onChange={ inputChange } type="text" name="title" id="title" placeholder='Title' required />
                     <CardInput value={ formatCardNumber } onChange={ handleInputChange } />
                     <div className="two-inline-input">

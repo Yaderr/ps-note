@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { ArrowLeftOnRectangleIcon, BanknotesIcon, Bars3Icon, CreditCardIcon, DocumentTextIcon, HomeIcon, LockClosedIcon } from '@heroicons/react/24/outline'
+import { ArrowLeftOnRectangleIcon, BanknotesIcon, Bars3Icon, CreditCardIcon, HomeIcon, LockClosedIcon } from '@heroicons/react/24/outline'
 import './css/sideNav.css'
 import { useState } from 'react';
 

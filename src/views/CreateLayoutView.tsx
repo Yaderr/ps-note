@@ -1,4 +1,4 @@
-import { PrivateOutlet } from "../utils/privateOutlet"
+import { PrivateOutlet } from "../utils/PrivateOutlet"
 
 
 export const CreateLayoutView = () => {

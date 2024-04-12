@@ -15,7 +15,7 @@ export const Home = () => {
                     <p>Welcome to your vault.</p>
                 </div>
                 <div className='profile'>
-                    <UserProfile user={user} />
+                    {user && <UserProfile user={user} />}
                 </div>
             </header>
             <main className='home-main-content'>

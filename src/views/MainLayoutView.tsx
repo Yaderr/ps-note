@@ -1,6 +1,6 @@
-import { Footer, SideNavBar } from "../componets"
+import { SideNavBar } from "../componets"
 import './css/mainLayout.css'
-import { PrivateOutlet } from "../utils/privateOutlet"
+import { PrivateOutlet } from "../utils/PrivateOutlet"
 
 export const MainLayoutView = () => {
     
