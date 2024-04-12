@@ -40,7 +40,7 @@ export const LoginForm = () => {
             <form onSubmit={ startLogin }>
                 <input onChange={ inputChange } type="email" name="email" placeholder='Email' required />
                 <PasswordInput value={formState.password} onChange={inputChange} />
-                <a href='/reset-password'>Forgot Password?</a>
+                <a href='./forgot-password'>Forgot Password?</a>
                 <button disabled={ isLoading } type="submit">
                     {
                         isLoading ? <Spinner />

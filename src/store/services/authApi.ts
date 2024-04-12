@@ -1,11 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { LoginParams, LoginResponse, SignupParams, User } from "../../interface"
+import { AuthResponse, ChangePasswordParams, LoginParams, LoginResponse, SignupParams, User } from "../../interface"
 
 const {
     VITE_PS_NOTE_API_BASE_URL
 } = import.meta.env
-
-
 
 export const authApi = createApi({
     reducerPath: 'authApi',
@@ -26,8 +24,27 @@ export const authApi = createApi({
                 method: 'POST',
                 body
             })
+        }),
+        resetPasword: builder.mutation<any, { email: string}>({
+            query: (body: { email: string}) => ({
+               url: 'auth/reset' ,
+               method: 'PATCH',
+               body 
+            })
+        }),
+        changePassword: builder.mutation<AuthResponse, ChangePasswordParams>({
+            query: (body: { token: string, oldPassword: string, newPassword: string }) => ({
+               url: 'auth/change-password' ,
+               method: 'POST',
+               body
+            })
         })
     })
 })
 
-export const { useLoginMutation, useSignUpMutation } = authApi
+export const { 
+    useLoginMutation,
+    useSignUpMutation,
+    useResetPaswordMutation,
+    useChangePasswordMutation 
+} = authApi

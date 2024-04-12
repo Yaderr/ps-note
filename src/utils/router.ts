@@ -10,7 +10,9 @@ import {
     CreateLayoutView,
     CreateCard,
     CreatePassword,
-    Account
+    Account,
+    ResetPassword,
+    ForgotPassword
 } from "../views";
 
 export const router = createBrowserRouter([
@@ -29,6 +31,14 @@ export const router = createBrowserRouter([
             {
                 path: 'signup',
                 Component: SignupAuth
+            },
+            {
+                path: 'forgot-password',
+                Component: ForgotPassword
+            },
+            {
+                path: 'reset-password?',
+                Component: ResetPassword
             }
         ]
     },

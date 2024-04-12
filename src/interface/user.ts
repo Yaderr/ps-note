@@ -28,3 +28,15 @@ export interface EditUserInfo {
     email?: string,
     profilePic?: string
 }
+
+export interface AuthResponse {
+    ok: boolean,
+    message: string
+}
+
+export interface ChangePasswordParams {
+    token: string,
+    oldPassword: string,
+    newPassword: string,
+    repeatNewPassword?: string
+}

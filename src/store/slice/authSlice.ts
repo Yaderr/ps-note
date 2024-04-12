@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit/react";
 import { User } from "../../interface";
 import { LoginResponse } from '../../interface/user';
 import type { PayloadAction } from "@reduxjs/toolkit/react"
+import { psNoteApi } from "../services/psNoteApi";
 
 export type AuthState = {
     user: User | undefined,
@@ -27,6 +28,7 @@ export const authSlice = createSlice({
         logOut: (state) => {
             state.user = null
             state.token = null
+            psNoteApi.util.resetApiState()
         }
     }
 })
