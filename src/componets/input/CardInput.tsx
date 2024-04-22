@@ -35,7 +35,7 @@ export const CardInput = ({ onChange, value }: CardInputProps) => {
                     !network ? (
                         <CreditCardIcon width={38} />
                     )   
-                    : <img src={`/src/assets/networks/icons/${network}_icon.svg`} alt="" />
+                    : <img src={`./public/assets/networks/icons/${network}_icon.svg`} alt="" />
                 }
             </div>
         </div>
