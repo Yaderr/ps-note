@@ -18,7 +18,7 @@ export const CardItem = (card: Card) => {
                 <a target="_blank" rel="noopener noreferrer" title={card.type}>
                     <div className='cards-icon-details'>
                         <div className='icon'>
-                            <img src={`./public/assets/networks/${card.type}_logo.svg`} alt="test" />
+                            <img src={`./networks/${card.type}_logo.svg`} alt="test" />
                         </div>
                         <div className='details'>
                             <span>{ card.title }</span>
